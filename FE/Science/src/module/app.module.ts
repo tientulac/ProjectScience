@@ -33,6 +33,10 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import vi from '@angular/common/locales/vi';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlideAnhComponent } from 'src/app/components/slide-anh/slide-anh.component';
+import { HomePageComponent } from './user-client/home-page/home-page.component';
+import { UserHeaderComponent } from './user-client/layouts/user-header/user-header.component';
+import { UserFooterComponent } from './user-client/layouts/user-footer/user-footer.component';
+import { TrangChuComponent } from './user-client/trang-chu/trang-chu.component';
 
 registerLocaleData(vi);
 
@@ -48,7 +52,11 @@ registerLocaleData(vi);
     MainComponent,
     TestComponent,
     BreadCrumbRouterComponent,
-    SlideAnhComponent
+    SlideAnhComponent,
+    HomePageComponent,
+    UserHeaderComponent,
+    UserFooterComponent,
+    TrangChuComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -68,7 +76,7 @@ registerLocaleData(vi);
     AccService,
     AppService,
     CookieService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

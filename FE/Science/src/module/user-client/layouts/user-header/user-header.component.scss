@@ -1,0 +1,43 @@
+.menu-wrapper {
+    background-image: url('http://khcnhungyen.gov.vn/App_Themes/default/images/header.jpg');
+    width: 100vw;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+
+.logo-header {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-widget {
+    margin: 20px 0;
+}
+
+.social-link {
+    padding: 20px 0;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px 0;
+    color: white;
+}
+
+.navbar {
+    background-color: #2699f7 !important;
+    padding: 10px 0;
+}
+
+.d-none {
+    display: none;
+}
+
+.menu-link {
+    font-weight: bold;
+    color: white !important;
+    text-decoration: none;
+}

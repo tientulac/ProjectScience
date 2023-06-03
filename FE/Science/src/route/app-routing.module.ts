@@ -8,6 +8,8 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { SlideAnhComponent } from 'src/app/components/slide-anh/slide-anh.component';
 import { TestComponent } from 'src/app/components/test/test.component';
 import { MainComponent } from 'src/layout/main/main.component';
+import { HomePageComponent } from 'src/module/user-client/home-page/home-page.component';
+import { TrangChuComponent } from 'src/module/user-client/trang-chu/trang-chu.component';
 import { ChangePassComponent } from 'src/page/change-pass/change-pass.component';
 import { LoginComponent } from 'src/page/login/login.component';
 const routes: Routes = [
@@ -29,6 +31,17 @@ const routes: Routes = [
     path: '',
     component: LoginComponent,
     canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'user',
+    component: HomePageComponent,
+    canActivate: [NonAuthGuard],
+    children: [
+      {
+        path: 'trang-chu',
+        component: TrangChuComponent,
+      }
+    ],
   },
   { path: '**', redirectTo: '' },
 ];

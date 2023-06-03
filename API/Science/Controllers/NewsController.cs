@@ -18,7 +18,7 @@ namespace Science.Controllers
             {
                 return new ResponseBase<List<New>>
                 {
-                    data = db.News.ToList(),
+                    data = db.News.ToList().OrderByDescending(x => x.news_id).ToList(),
                     message = "Thành công",
                     status = 200
                 };

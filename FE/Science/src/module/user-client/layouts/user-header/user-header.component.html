@@ -1,0 +1,50 @@
+<section class="header">
+    <div class="row menu-wrapper">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <img class="logo-header" src="http://khcnhungyen.gov.vn/App_Themes/default/images/logo.png" alt="">
+        </div>
+        <div class="col-md-3">
+            <div class="col-md-12 menu-widget">
+                <a class="social-link" target="_blank" href="https://www.facebook.com/khcnhungyen.gov.vn"
+                    title="khcnhungyen.gov.vn Fanpage">
+                    <i class="fas fa-envelope-square" aria-hidden="true"></i>
+                </a>&nbsp;&nbsp;&nbsp;
+                <a class="social-link" target="_blank" href="#" title="khcnhungyen.gov.vn on Google Plus"><i
+                        class="fas fa-envelope-square" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
+                <a class="social-link" target="_blank" href="https://youtu.be/lEmxFiBqeAM"
+                    title="khcnhungyen.gov.vn Youtube Channel"><i class="fas fa-envelope-square" aria-hidden="true"></i>
+                </a>
+                <br>
+            </div>
+            <div class="col-md-12" style="color: white;">
+                Hotline:<a href="02213.863.542" style="font-weight: bold;color: red;"> 02213.863.542</a>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <button nz-button nzType="primary" style="background-color: yellowgreen;">Tìm kiếm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="col-md-3">
+
+    </div>
+    <div class="row">
+        <ul *ngFor="let mp of listMenuParent" class="navbar-nav mr-auto" style="margin-left: 10px">
+            <li nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomCenter" class="menu-link">
+                <a class="menu-link" href="#/user/{{mp.menu_parent_code}}">{{mp.menu_parent_name}}
+                </a> <i *ngIf="mp.ListMenu?.length > 0" class="fa fa-caret-down" aria-hidden="true"></i>
+                &nbsp;&nbsp;
+            </li>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu *ngIf="mp.ListMenu?.length > 0">
+                    <li *ngFor="let m of mp.ListMenu" nz-menu-item><a href="{{m.menu_code}}">{{m.menu_name}}
+                        </a></li>
+                </ul>
+            </nz-dropdown-menu>
+        </ul>
+    </div>
+</nav>

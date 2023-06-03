@@ -13,6 +13,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { ResponseBase } from '../model/ResponseBase';
 import { SlideAnhService } from 'src/app/components/slide-anh/slide-anh.service';
+import { BaseService } from 'src/service/base.service';
 
 @Component({
   selector: 'app-base',
@@ -127,9 +128,10 @@ export class BaseComponent {
   listDayOfWeek: any;
   datesOfWeek: Date[] = [];
   datesOfMonth: Date[] = [];
-
+  effect = 'scrollx';
 
   slideAnhService: SlideAnhService;
+  baseService: BaseService;
   constructor() {
     this.router = AppInjector.get(Router);
     this.spinner = AppInjector.get(NgxSpinnerService);
@@ -137,13 +139,29 @@ export class BaseComponent {
     this.modal = AppInjector.get(NzModalService);
     this.messageService = AppInjector.get(NzMessageService);
     this.slideAnhService = AppInjector.get(SlideAnhService);
+    this.baseService = AppInjector.get(BaseService);
   }
 
   listSlideAnh: any;
+  listMenuParent: any;
+  listNews: any;
+  recentNew: any;
+
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
-      (res) => {
+      async (res) => {
         this.listSlideAnh = res.data;
+        this.baseService.getListMenuParent(await this.getToken()).subscribe(
+          async (res) => {
+            this.listMenuParent = res.data;
+            this.baseService.getListNew(await this.getToken()).subscribe(
+              (res) => {
+                this.listNews = res.data;
+                this.recentNew = this.listNews[0];
+              }
+            );
+          }
+        );
       }
     );
   }
@@ -422,5 +440,12 @@ export class BaseComponent {
 
   onChangeDateRange(event: any) {
     console.log(event);
+  }
+
+  renderSubString(str: String) {
+    if (str?.length > 100) {
+      return str?.substring(0, 100) + '...';
+    }
+    return str;
   }
 }
