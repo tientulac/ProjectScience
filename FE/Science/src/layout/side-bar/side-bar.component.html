@@ -1,0 +1,31 @@
+<aside #mainSidebar class="main-sidebar sidebar-light-primary elevation-4 cus-text"
+    style="overflow: visible !important; position: fixed;">
+    <!-- Brand Logo -->
+    <a [routerLink]="['/admin']" class="brand-link">
+        <img src="assets/img/unilogo.png" class="brand-image" />
+        <span class="brand-text font-weight-light">Khoa học Hưng Yên</span>
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <div *ngFor="let data of dataSideBar">
+                    <li [id]="data.id" class="nav-item menu-open">
+                        <a class="nav-link cus-bg" (click)="menu(data.id)" style="background: #418994; color: white;">
+                            &nbsp;
+                            <p>{{data.name}}<i class="right fa fa-angle-left"></i> </p>
+                        </a>
+                        <ul class="nav nav-treeview" *ngFor="let child of data.children">
+                            <li class="nav-item">
+                                <a [routerLink]="[child.routerLink]" class="nav-link" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{ exact: true }">
+                                    <i [class]="child.icon" aria-hidden="true"></i>
+                                    &nbsp;<p>&nbsp;{{child.name}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+</aside>

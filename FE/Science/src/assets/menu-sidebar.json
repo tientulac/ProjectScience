@@ -1,0 +1,88 @@
+[
+    {
+        "id": "menu1",
+        "type": "CATEGORY",
+        "name": "Danh mục",
+        "children": [
+            {
+                "name": "Quản lý slide ảnh",
+                "routerLink": "/admin/slide-anh",
+                "icon": "fa fa-image fa-fw"
+            },
+            {
+                "name": "Quản lý liên kết",
+                "routerLink": "/admin/lien-ket",
+                "icon": "fas fa-link"
+            },
+            {
+                "name": "Tin tức",
+                "routerLink": "/admin/tin-tuc",
+                "icon": "fa fa-sticky-note"
+            },
+            {
+                "name": "Thủ tục hành chính",
+                "routerLink": "/admin/thu-tuc-hanh-chinh",
+                "icon": "fa fa-address-book"
+            },
+            {
+                "name": "Chính sách hỗ trợ",
+                "routerLink": "/admin/chinh-sach-ho-tro",
+                "icon": "fa fa-bookmark"
+            },
+            {
+                "name": "Video",
+                "routerLink": "/admin/video",
+                "icon": "fa fa-camera"
+            },
+            {
+                "name": "Album Ảnh",
+                "routerLink": "/admin/album-anh",
+                "icon": "fa fa-chess-rook"
+            }
+        ]
+    },
+    {
+        "id": "menu2",
+        "type": "FUTURE",
+        "name": "Quản lý chức năng",
+        "children": [
+            {
+                "name": "Danh sách menu",
+                "routerLink": "/admin/menu",
+                "icon": "fas fa-highlighter"
+            },
+            {
+                "name": "Quản lý góp ý",
+                "routerLink": "/admin/gop-y",
+                "icon": "fas fa-calendar-alt"
+            },
+            {
+                "name": "Quản lý tuyển dụng",
+                "routerLink": "/admin/tuyen-dung",
+                "icon": "fas fa-columns"
+            }
+        ]
+    },
+    {
+        "id": "menu3",
+        "type": "SYSTEM",
+        "name": "Quản trị hệ thống",
+        "children": [
+            {
+                "name": "Quản lý người dùng",
+                "routerLink": "/admin/nguoi-dung",
+                "icon": "fas fa-users"
+            },
+            {
+                "name": "Quản lý quyền",
+                "routerLink": "/admin/quyen",
+                "icon": "fa fa-cubes fa-fw"
+            },
+            {
+                "name": "Phân quyền",
+                "routerLink": "/admin/phan-quyen",
+                "icon": "fa fa-book"
+            }
+        ]
+    }
+]
