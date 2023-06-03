@@ -45,9 +45,9 @@ namespace Science.Models
     partial void InsertComment(Comment instance);
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
-    partial void InsertMenu(Menu instance);
-    partial void UpdateMenu(Menu instance);
-    partial void DeleteMenu(Menu instance);
+    partial void InsertMenu(MenuChildren instance);
+    partial void UpdateMenu(MenuChildren instance);
+    partial void DeleteMenu(MenuChildren instance);
     partial void InsertMenuParent(MenuParent instance);
     partial void UpdateMenuParent(MenuParent instance);
     partial void DeleteMenuParent(MenuParent instance);
@@ -144,11 +144,11 @@ namespace Science.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Menu> Menus
+		public System.Data.Linq.Table<MenuChildren> Menus
 		{
 			get
 			{
-				return this.GetTable<Menu>();
+				return this.GetTable<MenuChildren>();
 			}
 		}
 		
@@ -1749,7 +1749,7 @@ namespace Science.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Menu")]
-	public partial class Menu : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class MenuChildren : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1802,7 +1802,7 @@ namespace Science.Models
     partial void Ondeleted_atChanged();
     #endregion
 		
-		public Menu()
+		public MenuChildren()
 		{
 			this._MenuParent = default(EntityRef<MenuParent>);
 			OnCreated();
@@ -2091,7 +2091,7 @@ namespace Science.Models
 		
 		private System.Nullable<System.DateTime> _deleted_at;
 		
-		private EntitySet<Menu> _Menus;
+		private EntitySet<MenuChildren> _Menus;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2119,7 +2119,7 @@ namespace Science.Models
 		
 		public MenuParent()
 		{
-			this._Menus = new EntitySet<Menu>(new Action<Menu>(this.attach_Menus), new Action<Menu>(this.detach_Menus));
+			this._Menus = new EntitySet<MenuChildren>(new Action<MenuChildren>(this.attach_Menus), new Action<MenuChildren>(this.detach_Menus));
 			OnCreated();
 		}
 		
@@ -2304,7 +2304,7 @@ namespace Science.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MenuParent_Menu", Storage="_Menus", ThisKey="menu_parent_id", OtherKey="menu_parent_id")]
-		public EntitySet<Menu> Menus
+		public EntitySet<MenuChildren> Menus
 		{
 			get
 			{
@@ -2336,13 +2336,13 @@ namespace Science.Models
 			}
 		}
 		
-		private void attach_Menus(Menu entity)
+		private void attach_Menus(MenuChildren entity)
 		{
 			this.SendPropertyChanging();
 			entity.MenuParent = this;
 		}
 		
-		private void detach_Menus(Menu entity)
+		private void detach_Menus(MenuChildren entity)
 		{
 			this.SendPropertyChanging();
 			entity.MenuParent = null;

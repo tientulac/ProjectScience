@@ -13,20 +13,20 @@ namespace Science.Controllers
         private LinqDataContext db = new LinqDataContext();
 
         [HttpGet]
-        public ResponseBase<List<Menu>> GetList()
+        public ResponseBase<List<MenuChildren>> GetList(int id = 0)
         {
             try
             {
-                return new ResponseBase<List<Menu>>
+                return new ResponseBase<List<MenuChildren>>
                 {
-                    data = db.Menus.ToList(),
+                    data = db.Menus.Where(x=>x.menu_parent_id==id).ToList(),
                     message = "Thành công",
                     status = 200
                 };
             }
             catch (Exception ex)
             {
-                return new ResponseBase<List<Menu>>
+                return new ResponseBase<List<MenuChildren>>
                 {
                     status = 500,
                     message = ex.Message
@@ -35,7 +35,7 @@ namespace Science.Controllers
         }
 
         [HttpPost]
-        public ResponseBase<bool> Save(Menu req)
+        public ResponseBase<bool> Save(MenuChildren req)
         {
             try
             {
