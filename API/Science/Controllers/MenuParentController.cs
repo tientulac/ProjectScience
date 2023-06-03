@@ -12,25 +12,45 @@ namespace Science.Controllers
         private LinqDataContext db = new LinqDataContext();
 
         [HttpGet]
-        public ResponseBase<List<MenuParent>> GetList()
+        public ResponseBase<List<MenuParentDTO>> GetList()
         {
-            try
+            var list = new List<MenuParentDTO>();
+            var listParent = db.MenuParents.ToList();
+            if (listParent.Any())
             {
-                return new ResponseBase<List<MenuParent>>
+                foreach (var item in listParent)
                 {
-                    data = db.MenuParents.ToList(),
-                    message = "Thành công",
-                    status = 200
-                };
+                    var menuParentDTO = new MenuParentDTO
+                    {
+                        menu_parent_id = item.menu_parent_id,
+                        menu_parent_code = item.menu_parent_code,
+                        menu_parent_name = item.menu_parent_name,
+                        title = item.title
+                    };
+                    menuParentDTO.ListMenu = new List<MenuDTO>();
+                    var _menu = db.Menus.Where(x => x.menu_parent_id == item.menu_parent_id);
+                    if (_menu.Any())
+                    {
+                        foreach (var m in _menu)
+                        {
+                            menuParentDTO.ListMenu.Add(new MenuDTO
+                            {
+                                menu_id = m.menu_id,
+                                menu_code = m.menu_code,
+                                menu_name = m.menu_name,
+                                menu_parent_id = m.menu_parent_id.GetValueOrDefault()
+                            });
+                        }
+                    }
+                    list.Add(menuParentDTO);
+                }
             }
-            catch (Exception ex)
+            return new ResponseBase<List<MenuParentDTO>>
             {
-                return new ResponseBase<List<MenuParent>>
-                {
-                    status = 500,
-                    message = ex.Message
-                };
-            }
+                data = list,
+                message = "Thành công",
+                status = 200
+            };
         }
 
         [HttpPost]
