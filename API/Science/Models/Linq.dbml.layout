@@ -80,7 +80,7 @@
         <elementListCompartment Id="9dab1f02-5f10-40ce-96e7-ee34c267eb36" absoluteBounds="12.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 7.08735270182292); (3.5 : 7.08735270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 7.08735270182292); (3.5 : 7.08735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LinqDataContext/Account/Account_Comment" />
       <nodes>
         <classShapeMoniker Id="57d0b817-c322-4e65-aa40-6461640f808d" />
@@ -94,5 +94,11 @@
         <classShapeMoniker Id="a536702b-367b-4d22-ba5a-4e2a35b12829" />
       </nodes>
     </associationConnector>
+    <classShape Id="03bedc53-8111-4d0a-a5ef-aaaca8e1ebf2" absoluteBounds="3.5, 8.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LinqDataContext/New" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ccbc1cbc-15bb-46d1-ba5a-374448ce645b" absoluteBounds="3.5149999999999997, 9.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
