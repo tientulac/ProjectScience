@@ -33,6 +33,13 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import vi from '@angular/common/locales/vi';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlideAnhComponent } from 'src/app/components/slide-anh/slide-anh.component';
+import { LienKetComponent } from 'src/app/components/lien-ket/lien-ket.component';
+import { TinTucComponent } from 'src/app/components/tin-tuc/tin-tuc.component';
+import { ThuTucHanhChinhComponent } from 'src/app/components/thu-tuc-hanh-chinh/thu-tuc-hanh-chinh.component';
+import { ChinhSachHoTroComponent } from 'src/app/components/chinh-sach-ho-tro/chinh-sach-ho-tro.component';
+import { AlbumImageComponent } from 'src/app/components/album-image/album-image.component';
+import { MenuComponent } from 'src/app/components/menu/menu.component';
+import { MenuChildrenComponentextends } from 'src/app/components/menu/menu-children/menu-children.component';
 
 registerLocaleData(vi);
 
@@ -48,7 +55,14 @@ registerLocaleData(vi);
     MainComponent,
     TestComponent,
     BreadCrumbRouterComponent,
-    SlideAnhComponent
+    SlideAnhComponent,
+    LienKetComponent,
+    TinTucComponent,
+    ThuTucHanhChinhComponent,
+    ChinhSachHoTroComponent,
+    AlbumImageComponent,
+    MenuComponent,
+    MenuChildrenComponentextends
   ],
   imports: [
     BrowserAnimationsModule,

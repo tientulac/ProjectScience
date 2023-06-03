@@ -26,5 +26,6 @@ namespace Science.Models
         public string menu_code { get; set; }
         public string menu_name { get; set; }
         public int menu_parent_id { get; set; }
+        public int status { get; set; }
     }
 }

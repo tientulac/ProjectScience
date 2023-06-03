@@ -13,6 +13,14 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { ResponseBase } from '../model/ResponseBase';
 import { SlideAnhService } from 'src/app/components/slide-anh/slide-anh.service';
+import { LienKetService } from 'src/app/components/lien-ket/lien-ket.service';
+import { TinTucService } from 'src/app/components/tin-tuc/tin-tuc.service';
+import { ThuTucHanhChinhService } from 'src/app/components/thu-tuc-hanh-chinh/thu-tuc-hanh-chinh.service';
+import { ChinhSachHoTroComponent } from 'src/app/components/chinh-sach-ho-tro/chinh-sach-ho-tro.component';
+import { ChinhSachHoTroService } from 'src/app/components/chinh-sach-ho-tro/chinh-sach-ho-tro.service';
+import { AlbumImageService } from 'src/app/components/album-image/album-image.service';
+import { MeNuService } from 'src/app/components/menu/menu.service';
+import { MenuChildrenService } from 'src/app/components/menu/menu-children/menu-children.service';
 
 @Component({
   selector: 'app-base',
@@ -33,6 +41,7 @@ export class BaseComponent {
   dataMoTa: any = 'Mô tả phòng';
   checkInsert: boolean = false;
   ID: any;
+  menu_parent_id:any;
   Ma_loai_phong_ft: any;
   Ma_loai_phong: any;
   Ten_loai_phong: any;
@@ -130,6 +139,13 @@ export class BaseComponent {
 
 
   slideAnhService: SlideAnhService;
+  lienKetService: LienKetService;
+  tinTucService:TinTucService;
+  thuTucHanhChinhService:ThuTucHanhChinhService;
+  chinhSachHoTroService:ChinhSachHoTroService;
+  albumImageService:AlbumImageService;
+  menuService:MeNuService;
+  menuChildrenService:MenuChildrenService;
   constructor() {
     this.router = AppInjector.get(Router);
     this.spinner = AppInjector.get(NgxSpinnerService);
@@ -137,9 +153,23 @@ export class BaseComponent {
     this.modal = AppInjector.get(NzModalService);
     this.messageService = AppInjector.get(NzMessageService);
     this.slideAnhService = AppInjector.get(SlideAnhService);
+    this.lienKetService = AppInjector.get(LienKetService);
+    this.tinTucService = AppInjector.get(TinTucService);
+    this.thuTucHanhChinhService = AppInjector.get(ThuTucHanhChinhService);
+    this.chinhSachHoTroService = AppInjector.get(ChinhSachHoTroService);
+    this.albumImageService = AppInjector.get(AlbumImageService);
+    this.menuService = AppInjector.get(MeNuService);
+    this.menuChildrenService = AppInjector.get(MenuChildrenService);
   }
 
   listSlideAnh: any;
+  listLienKet: any;
+  listTinTuc: any;
+  listThuTucHanhChinh: any;
+  listchinhSachHoTro: any;
+  listalbumImage: any;
+  listalMenu: any;
+  listalMenuChildren: any;
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
       (res) => {
@@ -147,7 +177,57 @@ export class BaseComponent {
       }
     );
   }
-
+  async getListDataLienKet() {
+    this.lienKetService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listLienKet = res.data;
+      }
+    );
+  }
+  async getListDataTinTuc() {
+    this.tinTucService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listTinTuc = res.data;
+      }
+    );
+  }
+  async getListDatalistThuTucHanhChinh() {
+    this.thuTucHanhChinhService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listThuTucHanhChinh = res.data;
+      }
+    );
+  }
+  async getListDatalistalbumImage() {
+    this.albumImageService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalbumImage = res.data;
+      }
+    );
+  } 
+  async getListDatalistchinhSachHoTro() {
+    this.chinhSachHoTroService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listchinhSachHoTro = res.data;
+      }
+    );
+  }
+  async getListDatalistMenu() {
+    this.menuService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalMenu = res.data;
+      }
+    );
+  }
+  async getListDatalistMenuChildren(menu_parent_id:any) {
+    debugger
+    this.menuChildrenService.getListAll(menu_parent_id,await this.getToken()).subscribe(
+      (res) => {
+        this.listalMenuChildren = res.data;
+        console.log(this.listalMenuChildren)
+      }
+    );
+  }
   currentPage: any = 1;
   arrNumberPage: any = [];
   arrNumberPage_chil: any = [];

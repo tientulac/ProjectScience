@@ -25,7 +25,8 @@ namespace Science.Controllers
                         menu_parent_id = item.menu_parent_id,
                         menu_parent_code = item.menu_parent_code,
                         menu_parent_name = item.menu_parent_name,
-                        title = item.title
+                        title = item.title,
+                        status=item.status.GetValueOrDefault()
                     };
                     menuParentDTO.ListMenu = new List<MenuDTO>();
                     var _menu = db.Menus.Where(x => x.menu_parent_id == item.menu_parent_id);
@@ -38,7 +39,8 @@ namespace Science.Controllers
                                 menu_id = m.menu_id,
                                 menu_code = m.menu_code,
                                 menu_name = m.menu_name,
-                                menu_parent_id = m.menu_parent_id.GetValueOrDefault()
+                                menu_parent_id = m.menu_parent_id.GetValueOrDefault(),
+                                status=m.status.GetValueOrDefault()
                             });
                         }
                     }
