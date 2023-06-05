@@ -27,6 +27,7 @@
                                         <tr>
                                             <th class="fw-b">STT</th>
                                             <th class="fw-b">Tiêu đề</th>
+                                            <th class="fw-b">Ảnh</th>
                                             <th class="fw-b">Trạng thái</th>
                                             <th class="fw-b">Thao tác</th>
                                         </tr>
@@ -35,6 +36,7 @@
                                         <tr *ngFor="let p of basicTable.data; let i = index">
                                             <td>{{ i + 1 }}</td>
                                             <td>{{ p.title }}</td>
+                                            <td><img src="{{ p.image }}" style="width: 50px; height: 50px" alt=""></td>
                                             <td *ngIf="p.status == 1" style="font-weight: bold; color: green;"><i
                                                     class="fa fa-check" aria-hidden="true"></i>
                                             </td>
@@ -103,6 +105,12 @@
                     <nz-form-label nzFor="note">Thẻ mô tả</nz-form-label>
                     <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
                     
+                </nz-form-item>
+                <nz-form-item class="col-md-12">
+                    <nz-form-label  nzFor="image">Ảnh</nz-form-label>
+                    <nz-form-control nzErrorTip="Không được bỏ trống !">
+                        <input formControlName="image" nz-input placeholder="Nhập" />
+                    </nz-form-control>
                 </nz-form-item>
                 <nz-form-item class="col-md-6">
                     <nz-form-label  nzFor="status">Trạng thái</nz-form-label>

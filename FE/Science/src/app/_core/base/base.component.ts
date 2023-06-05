@@ -23,6 +23,7 @@ import { MeNuService } from 'src/app/components/menu/menu.service';
 import { MenuChildrenService } from 'src/app/components/menu/menu-children/menu-children.service';
 import { GopYService } from 'src/app/components/gop-y/gop-y.service';
 import { LoaiTintucService } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.service';
+import { TuyenDungService } from 'src/app/components/tuyen-dung/tuyen-dung.service';
 
 @Component({
   selector: 'app-base',
@@ -150,6 +151,7 @@ export class BaseComponent {
   menuChildrenService:MenuChildrenService;
   gopYService:GopYService;
   loaiTintucService:LoaiTintucService;
+  tuyenDungService:TuyenDungService;
   constructor() {
     this.router = AppInjector.get(Router);
     this.spinner = AppInjector.get(NgxSpinnerService);
@@ -166,6 +168,7 @@ export class BaseComponent {
     this.menuChildrenService = AppInjector.get(MenuChildrenService);
     this.gopYService = AppInjector.get(GopYService);
     this.loaiTintucService = AppInjector.get(LoaiTintucService);
+    this.tuyenDungService = AppInjector.get(TuyenDungService);
   }
 
   listSlideAnh: any;
@@ -178,6 +181,7 @@ export class BaseComponent {
   listalMenuChildren: any;
   listalGopY: any;
   listalLoaiTinTuc: any;
+  listalTuyenDung: any;
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
       (res) => {
@@ -196,6 +200,7 @@ export class BaseComponent {
     this.tinTucService.getListAll(await this.getToken()).subscribe(
       (res) => {
         this.listTinTuc = res.data;
+        console.log(this.listTinTuc)
       }
     );
   }
@@ -245,7 +250,13 @@ export class BaseComponent {
     this.loaiTintucService.getListAll(await this.getToken()).subscribe(
       (res) => {
         this.listalLoaiTinTuc = res.data;
-        console.log(this.listalLoaiTinTuc)
+      }
+    );
+  }
+  async getListDatalistTuyenDung() {
+    this.tuyenDungService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalTuyenDung = res.data;
       }
     );
   }

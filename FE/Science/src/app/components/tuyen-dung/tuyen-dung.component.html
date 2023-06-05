@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <div class="container"></div>
-                                <nz-table #basicTable [nzData]="listTinTuc" nzShowPagination nzShowSizeChanger
+                                <nz-table #basicTable [nzData]="listalTuyenDung" nzShowPagination nzShowSizeChanger
                                     [nzPageSize]="10">
                                     <thead>
                                         <tr>
@@ -52,7 +52,7 @@
                                                         (click)="open(p, 'EDIT')" nzTheme="outline"></span></a>
                                                 <nz-divider nzType="vertical"></nz-divider>
                                                 <a><span class="table-icon" nz-icon nzType="delete"
-                                                        (click)="openDeleteModal(p.news_id)"
+                                                        (click)="openDeleteModal(p.recruiment_id)"
                                                         nzTheme="outline"></span></a>
                                             </td>
                                         </tr>
@@ -78,7 +78,7 @@
     [nzWidth]="1000">
     <ng-container *nzModalContent>
         <div class="col-md-12">
-            <nz-form-label >Mô tả</nz-form-label>
+            <nz-form-label>Mô tả</nz-form-label>
             <ckeditor style="pointer-events: none;" readonly [editor]="Editor" [(ngModel)]="dataEditor"
                 (change)="onChange($event)"></ckeditor>
         </div>
@@ -104,26 +104,34 @@
                     <ckeditor [editor]="Editor" formControlName="descrip"></ckeditor>
                 </nz-form-item>
                 <nz-form-item class="col-md-12">
-                    <nz-form-label nzFor="note">Thẻ mô tả</nz-form-label>
-                    <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
-                </nz-form-item>
-                <nz-form-item class="col-md-12">
-                    <nz-form-label  nzFor="status">Loại tin tức</nz-form-label>
-                    <nz-form-control>
-                        <nz-select nzShowSearch nzAllowClear formControlName="type" nzPlaceHolder="Chọn ">
-                            <nz-option *ngFor="let p of listalLoaiTinTuc" [nzLabel]="p.Loai_tin_tuc" [nzValue]="p.Ma_loai"></nz-option>
-                        </nz-select>
-                    </nz-form-control>
-                </nz-form-item>
-                <nz-form-item class="col-md-12">
-                    <nz-form-label  nzFor="image">Ảnh</nz-form-label>
+                    <nz-form-label  nzFor="Ma_loai_phong">Ảnh</nz-form-label>
                     <nz-form-control nzErrorTip="Không được bỏ trống !">
                         <input formControlName="image" nz-input placeholder="Nhập" />
                     </nz-form-control>
                 </nz-form-item>
                 <nz-form-item class="col-md-12">
+                    <nz-form-label  nzFor="Address">Địa chỉ</nz-form-label>
+                    <nz-form-control nzErrorTip="Không được bỏ trống !">
+                        <input formControlName="Address" nz-input placeholder="Nhập" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item class="col-md-12">
+                    <nz-form-label  nzFor="quantity">Số lượng</nz-form-label>
+                    <nz-form-control nzErrorTip="Không được bỏ trống !">
+                        <input formControlName="quantity" nz-input placeholder="Nhập" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item class="col-md-12">
+                    <nz-form-label  nzFor="wage">Lương</nz-form-label>
+                    <input formControlName="wage" nz-input placeholder="Nhập" />
+                </nz-form-item>
+                <nz-form-item class="col-md-12">
+                    <nz-form-label nzFor="poster">Người đăng</nz-form-label>
+                    <input formControlName="poster" nz-input placeholder="Nhập" />
+                </nz-form-item>
+                <nz-form-item class="col-md-12">
                     <nz-form-label  nzFor="status">Trạng thái</nz-form-label>
-                    <nz-form-control>
+                    <nz-form-control nzErrorTip="Không được bỏ trống !">
                         <nz-select nzShowSearch nzAllowClear formControlName="status" nzPlaceHolder="Chọn ">
                             <nz-option nzLabel="Chọn" [nzValue]="null">Chọn</nz-option>
                             <nz-option nzLabel="Hiển thị" [nzValue]="1"></nz-option>
@@ -131,6 +139,11 @@
                         </nz-select>
                     </nz-form-control>
                 </nz-form-item>
+                <nz-form-item class="col-md-12">
+                    <nz-form-label nzFor="note">Nội dung</nz-form-label>
+                    <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
+                </nz-form-item>
+
             </div>
         </form>
     </ng-container>

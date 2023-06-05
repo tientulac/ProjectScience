@@ -12,20 +12,20 @@ namespace Science.Controllers
         private LinqDataContext db = new LinqDataContext();
 
         [HttpGet]
-        public ResponseBase<List<New>> GetList()
+        public ResponseBase<List<sp_TinTuc_LoadResult>> GetList()
         {
             try
             {
-                return new ResponseBase<List<New>>
+                return new ResponseBase<List<sp_TinTuc_LoadResult>>
                 {
-                    data = db.News.ToList(),
+                data = db.sp_TinTuc_Load().ToList(),
                     message = "Thành công",
                     status = 200
                 };
             }
             catch (Exception ex)
             {
-                return new ResponseBase<List<New>>
+                return new ResponseBase<List<sp_TinTuc_LoadResult>>
                 {
                     status = 500,
                     message = ex.Message

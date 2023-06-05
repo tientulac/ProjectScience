@@ -15,6 +15,7 @@ import { SlideAnhComponent } from 'src/app/components/slide-anh/slide-anh.compon
 import { TestComponent } from 'src/app/components/test/test.component';
 import { ThuTucHanhChinhComponent } from 'src/app/components/thu-tuc-hanh-chinh/thu-tuc-hanh-chinh.component';
 import { TinTucComponent } from 'src/app/components/tin-tuc/tin-tuc.component';
+import { TuyenDungComponentextends } from 'src/app/components/tuyen-dung/tuyen-dung.component';
 import { MainComponent } from 'src/layout/main/main.component';
 import { ChangePassComponent } from 'src/page/change-pass/change-pass.component';
 import { LoginComponent } from 'src/page/login/login.component';
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path: 'loai-tin-tuc',
         component: LoaiTinTucComponentextends,
+      },
+      {
+        path: 'tuyen-dung',
+        component: TuyenDungComponentextends,
       }
     ],
   },
