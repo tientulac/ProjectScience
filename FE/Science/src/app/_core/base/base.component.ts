@@ -220,11 +220,9 @@ export class BaseComponent {
     );
   }
   async getListDatalistMenuChildren(menu_parent_id:any) {
-    debugger
     this.menuChildrenService.getListAll(menu_parent_id,await this.getToken()).subscribe(
       (res) => {
         this.listalMenuChildren = res.data;
-        console.log(this.listalMenuChildren)
       }
     );
   }

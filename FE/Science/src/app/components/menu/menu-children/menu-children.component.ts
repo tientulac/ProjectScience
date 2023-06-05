@@ -28,12 +28,14 @@ export class MenuChildrenComponentextends extends BaseComponent implements OnIni
       menu_name: [null,[Validators.required]],
       status:[null],
     });
+    this.getListDatalistMenuChildren(this.ID_menuPearent);
   }
 
   open(data: any, type: any) {
     this.addForm.reset();
     this.titleModal = type == 'ADD' ? 'Thêm mới' : type == 'EDIT' ? 'Cập nhật' : 'Chi tiết';
-    this.ID = data.menu_parent_id ?? null;
+    this.ID = data.menu_id ?? null;
+    this.menu_parent_id=data.menu_parent_id
     if (type == 'ADD' || type == 'EDIT') {
       this.isDisplayAddModal = true;
       this.titleModal = type == 'ADD' ? 'Thêm mới' : 'Cập nhật';
@@ -43,17 +45,14 @@ export class MenuChildrenComponentextends extends BaseComponent implements OnIni
         menu_name: data.menu_name ?? null,
       });
     }
-    if (type == 'VIEW') {
-      debugger
-      this.getListDatalistMenuChildren(this.ID);
-      this.isDetail = true;
-    }
+   
   }
 
   async save() {
     if (this.addForm.valid) {
+      debugger
       let req = {
-        menu_parent_id: this.menu_parent_id,
+        menu_parent_id: this.ID_menuPearent,
         menu_id:this.ID,
         menu_name: this.addForm.value.menu_name,
         menu_code: this.addForm.value.menu_code,
@@ -64,7 +63,6 @@ export class MenuChildrenComponentextends extends BaseComponent implements OnIni
           if (res.status == 200) {
             this.toastr.success('Thành công');
             this.handleCancel();
-            this.getListDatalistMenuChildren(this.menu_parent_id);
           } else {
             this.toastr.error('Thất bại');
           }

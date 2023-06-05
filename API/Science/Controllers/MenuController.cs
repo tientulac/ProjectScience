@@ -13,20 +13,36 @@ namespace Science.Controllers
         private LinqDataContext db = new LinqDataContext();
 
         [HttpGet]
-        public ResponseBase<List<MenuChildren>> GetList(int id = 0)
+        public ResponseBase<List<MenuChildren1>> GetList(int id = 0)
         {
             try
             {
-                return new ResponseBase<List<MenuChildren>>
+                var list = new List<MenuChildren1>();
+                var listChildren = db.Menus.Where(x => x.menu_parent_id == id).ToList();
+                if (listChildren.Any())
                 {
-                    data = db.Menus.Where(x=>x.menu_parent_id==id).ToList(),
+                    foreach (var item in listChildren)
+                    {
+                        var menuChildren = new MenuChildren1
+                        {
+                            menu_id = item.menu_id,
+                            menu_code = item.menu_code,
+                            menu_name = item.menu_name,
+                            status = item.status.GetValueOrDefault()
+                        };
+                        list.Add(menuChildren);
+                    }
+                }
+                return new ResponseBase<List<MenuChildren1>>
+                {
+                    data = list,
                     message = "Thành công",
                     status = 200
                 };
             }
             catch (Exception ex)
             {
-                return new ResponseBase<List<MenuChildren>>
+                return new ResponseBase<List<MenuChildren1>>
                 {
                     status = 500,
                     message = ex.Message

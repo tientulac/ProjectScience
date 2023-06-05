@@ -21,7 +21,7 @@
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <div class="container"></div>
-                                <nz-table #basicTable [nzData]="listalMenu" nzShowPagination nzShowSizeChanger
+                                <nz-table #basicTable [nzData]="listalMenuChildren" nzShowPagination nzShowSizeChanger
                                     [nzPageSize]="10">
                                     <thead>
                                         <tr>
@@ -34,7 +34,7 @@
                                     <tbody>
                                         <tr *ngFor="let p of basicTable.data; let i = index">
                                             <td>{{ i + 1 }}</td>
-                                            <td>{{ p.menu_parent_name }}</td>
+                                            <td>{{ p.menu_name }}</td>
                                             <td *ngIf="p.status == 1" style="font-weight: bold; color: green;"><i
                                                     class="fa fa-check" aria-hidden="true"></i>
                                             </td>
@@ -48,7 +48,7 @@
                                                         (click)="open(p, 'EDIT')" nzTheme="outline"></span></a>
                                                 <nz-divider nzType="vertical"></nz-divider>
                                                 <a><span class="table-icon" nz-icon nzType="delete"
-                                                        (click)="openDeleteModal(p.menu_parent_id)"
+                                                        (click)="openDeleteModal(p.menu_id)"
                                                         nzTheme="outline"></span></a>
                                             </td>
                                         </tr>
