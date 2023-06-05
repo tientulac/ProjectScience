@@ -230,6 +230,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Linq.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MenuChildren1.cs" />
     <Compile Include="Models\MenuParentDTO.cs" />
     <Compile Include="Models\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

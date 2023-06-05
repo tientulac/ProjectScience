@@ -37,6 +37,13 @@ import { HomePageComponent } from './user-client/home-page/home-page.component';
 import { UserHeaderComponent } from './user-client/layouts/user-header/user-header.component';
 import { UserFooterComponent } from './user-client/layouts/user-footer/user-footer.component';
 import { TrangChuComponent } from './user-client/trang-chu/trang-chu.component';
+import { LienKetComponent } from 'src/app/components/lien-ket/lien-ket.component';
+import { TinTucComponent } from 'src/app/components/tin-tuc/tin-tuc.component';
+import { ThuTucHanhChinhComponent } from 'src/app/components/thu-tuc-hanh-chinh/thu-tuc-hanh-chinh.component';
+import { ChinhSachHoTroComponent } from 'src/app/components/chinh-sach-ho-tro/chinh-sach-ho-tro.component';
+import { AlbumImageComponent } from 'src/app/components/album-image/album-image.component';
+import { MenuComponent } from 'src/app/components/menu/menu.component';
+import { MenuChildrenComponentextends } from 'src/app/components/menu/menu-children/menu-children.component';
 
 registerLocaleData(vi);
 
@@ -56,7 +63,14 @@ registerLocaleData(vi);
     HomePageComponent,
     UserHeaderComponent,
     UserFooterComponent,
-    TrangChuComponent
+    TrangChuComponent,
+    LienKetComponent,
+    TinTucComponent,
+    ThuTucHanhChinhComponent,
+    ChinhSachHoTroComponent,
+    AlbumImageComponent,
+    MenuComponent,
+    MenuChildrenComponentextends
   ],
   imports: [
     BrowserAnimationsModule,
