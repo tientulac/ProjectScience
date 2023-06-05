@@ -46,6 +46,7 @@ import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { MenuChildrenComponentextends } from 'src/app/components/menu/menu-children/menu-children.component';
 import { GopYComponentextends } from 'src/app/components/gop-y/gop-y.component';
 import { LoaiTinTucComponentextends } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.component';
+import { TuyenDungComponentextends } from 'src/app/components/tuyen-dung/tuyen-dung.component';
 
 registerLocaleData(vi);
 
@@ -74,7 +75,8 @@ registerLocaleData(vi);
     MenuComponent,
     MenuChildrenComponentextends,
     GopYComponentextends,
-    LoaiTinTucComponentextends
+    LoaiTinTucComponentextends,
+    TuyenDungComponentextends
   ],
   imports: [
     BrowserAnimationsModule,

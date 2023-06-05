@@ -47,6 +47,10 @@ namespace Science.Controllers
                     record.status = req.status;
                     record.descrip = req.descrip;
                     record.image = req.image;
+                    record.Address = req.Address;
+                    record.poster = req.poster;
+                    record.wage = req.wage;
+                    record.quantity = req.quantity;
                     record.updated_at = DateTime.Now;
                     db.SubmitChanges();
                 }

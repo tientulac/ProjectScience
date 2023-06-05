@@ -24,6 +24,7 @@ import { MeNuService } from 'src/app/components/menu/menu.service';
 import { MenuChildrenService } from 'src/app/components/menu/menu-children/menu-children.service';
 import { GopYService } from 'src/app/components/gop-y/gop-y.service';
 import { LoaiTintucService } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.service';
+import { TuyenDungService } from 'src/app/components/tuyen-dung/tuyen-dung.service';
 
 @Component({
   selector: 'app-base',
@@ -44,7 +45,7 @@ export class BaseComponent {
   dataMoTa: any = 'Mô tả phòng';
   checkInsert: boolean = false;
   ID: any;
-  menu_parent_id:any;
+  menu_parent_id: any;
   Ma_loai_phong_ft: any;
   Ma_loai_phong: any;
   Ten_loai_phong: any;
@@ -144,14 +145,15 @@ export class BaseComponent {
   slideAnhService: SlideAnhService;
   baseService: BaseService;
   lienKetService: LienKetService;
-  tinTucService:TinTucService;
-  thuTucHanhChinhService:ThuTucHanhChinhService;
-  chinhSachHoTroService:ChinhSachHoTroService;
-  albumImageService:AlbumImageService;
-  menuService:MeNuService;
-  menuChildrenService:MenuChildrenService;
-  gopYService:GopYService;
-  loaiTintucService:LoaiTintucService;
+  tinTucService: TinTucService;
+  thuTucHanhChinhService: ThuTucHanhChinhService;
+  chinhSachHoTroService: ChinhSachHoTroService;
+  albumImageService: AlbumImageService;
+  menuService: MeNuService;
+  menuChildrenService: MenuChildrenService;
+  gopYService: GopYService;
+  loaiTintucService: LoaiTintucService;
+  tuyenDungService: TuyenDungService;
 
   constructor() {
     this.router = AppInjector.get(Router);
@@ -170,6 +172,7 @@ export class BaseComponent {
     this.menuChildrenService = AppInjector.get(MenuChildrenService);
     this.gopYService = AppInjector.get(GopYService);
     this.loaiTintucService = AppInjector.get(LoaiTintucService);
+    this.tuyenDungService = AppInjector.get(TuyenDungService);
   }
 
   listSlideAnh: any;
@@ -186,6 +189,7 @@ export class BaseComponent {
   listalGopY: any;
   listalLoaiTinTuc: any;
   listNewsNotify: any;
+  listalTuyenDung: any;
 
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
@@ -217,6 +221,7 @@ export class BaseComponent {
     this.tinTucService.getListAll(await this.getToken()).subscribe(
       (res) => {
         this.listTinTuc = res.data;
+        console.log(this.listTinTuc)
       }
     );
   }
@@ -233,7 +238,7 @@ export class BaseComponent {
         this.listalbumImage = res.data;
       }
     );
-  } 
+  }
   async getListDatalistchinhSachHoTro() {
     this.chinhSachHoTroService.getListAll(await this.getToken()).subscribe(
       (res) => {
@@ -248,8 +253,8 @@ export class BaseComponent {
       }
     );
   }
-  async getListDatalistMenuChildren(menu_parent_id:any) {
-    this.menuChildrenService.getListAll(menu_parent_id,await this.getToken()).subscribe(
+  async getListDatalistMenuChildren(menu_parent_id: any) {
+    this.menuChildrenService.getListAll(menu_parent_id, await this.getToken()).subscribe(
       (res) => {
         this.listalMenuChildren = res.data;
       }
@@ -272,6 +277,14 @@ export class BaseComponent {
       }
     );
   }
+  async getListDatalistTuyenDung() {
+    this.tuyenDungService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalTuyenDung = res.data;
+      }
+    );
+  }
+  
   currentPage: any = 1;
   arrNumberPage: any = [];
   arrNumberPage_chil: any = [];

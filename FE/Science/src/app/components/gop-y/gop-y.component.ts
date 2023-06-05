@@ -42,7 +42,8 @@ export class GopYComponentextends extends BaseComponent implements OnInit {
       Email: [null],
       So_dien_thoai: [null],
       Tieu_de:[null],
-      Noi_dung: [null]
+      Noi_dung: [null],
+      image: [null],
     });
     await this.getListDatalistGopY();
   }
@@ -61,6 +62,8 @@ export class GopYComponentextends extends BaseComponent implements OnInit {
         Tieu_de: data.Tieu_de ?? null,
         Noi_dung: data.Noi_dung ?? null,
         Ngay_hoi: data.Ngay_hoi ?? null,
+        image: data.image ?? null,
+        
       });
       this.dataEditor = data.descrip ?? '';
     }
@@ -80,6 +83,7 @@ export class GopYComponentextends extends BaseComponent implements OnInit {
         Tieu_de: this.addForm.value.Tieu_de,
         Noi_dung: this.addForm.value.Noi_dung,
         Ngay_hoi: this.addForm.value.Ngay_hoi,
+        image: this.addForm.value.image,
       }
       this.gopYService.save(req, this.Token).subscribe(
         (res: any) => {
