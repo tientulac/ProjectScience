@@ -5,11 +5,11 @@ import { AppInjector } from 'src/module/app.module';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
 @Component({
-  selector: 'app-tin-tuc',
-  templateUrl: './tin-tuc.component.html',
-  styleUrls: ['./tin-tuc.component.scss']
+  selector: 'app-loai-tin-tuc',
+  templateUrl: './loai-tin-tuc.component.html',
+  styleUrls: ['./loai-tin-tuc.component.scss']
 })
-export class TinTucComponent extends BaseComponent implements OnInit {
+export class LoaiTinTucComponentextends extends BaseComponent implements OnInit {
 
   public Editor = ClassicEditor;
   dataEditor: any;
@@ -22,7 +22,7 @@ export class TinTucComponent extends BaseComponent implements OnInit {
       icon: 'fas fa-home',
     },
     {
-      name: 'Tin tức',
+      name: 'Loại tin tức',
       routerLink: '',
       active: false,
       icon: ''
@@ -38,31 +38,22 @@ export class TinTucComponent extends BaseComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.Token = await this.getToken();
     this.addForm = this.fb.group({
-      title: [null],
-      image: [null],
-      status: [null],
-      descrip:[null],
-      note: [null],
-      url:[null],
-      type:[null]
+      Loai_tin_tuc: [null,[Validators.required]],
+      Ma_loai:[null,[Validators.required]]
     });
-    await this.getListDataTinTuc();
+    await this.getListDatalistLoaiTinTuc();
   }
 
   open(data: any, type: any) {
     this.addForm.reset();
     this.titleModal = type == 'ADD' ? 'Thêm mới' : type == 'EDIT' ? 'Cập nhật' : 'Chi tiết';
-    this.ID = data.news_id ?? null;
+    this.ID = data.id_loai_tin_tuc ?? null;
     if (type == 'ADD' || type == 'EDIT') {
       this.isDisplayAddModal = true;
       this.titleModal = type == 'ADD' ? 'Thêm mới' : 'Cập nhật';
       this.addForm.patchValue({
-        title: data.title ?? null,
-        image: data.image ?? null,
-        status: data.status ?? null,
-        note: data.note ?? null,
-        descrip:data.note??null,
-        type:data.type??null
+        Loai_tin_tuc: data.Loai_tin_tuc ?? null,
+        Ma_loai:data.Ma_loai??null
       });
     }
     if (type == 'VIEW') {
@@ -74,21 +65,16 @@ export class TinTucComponent extends BaseComponent implements OnInit {
   async save() {
     if (this.addForm.valid) {
       let req = {
-        news_id: this.ID,
-        title: this.addForm.value.title,
-        image: this.addForm.value.image,
-        status: this.addForm.value.status,
-        descrip: this.addForm.value.descrip,
-        note: this.addForm.value.note,
-        url: this.addForm.value.url,
-        type:this.addForm.value.type
+        id_loai_tin_tuc: this.ID,
+        Ma_loai:this.addForm.value.Ma_loai,
+        Loai_tin_tuc: this.addForm.value.Loai_tin_tuc
       }
-      this.gopYService.save(req, this.Token).subscribe(
+      this.loaiTintucService.save(req, this.Token).subscribe(
         (res: any) => {
           if (res.status == 200) {
             this.toastr.success('Thành công');
             this.handleCancel();
-            this.getListDataTinTuc();
+            this.getListDatalistLoaiTinTuc();
           } else {
             this.toastr.error('Thất bại');
           }
@@ -105,10 +91,10 @@ export class TinTucComponent extends BaseComponent implements OnInit {
   }
 
   delete() {
-    this.gopYService.delete(this.ID, this.Token).subscribe((data) => {
+    this.loaiTintucService.delete(this.ID, this.Token).subscribe((data) => {
       if (data.status == 200) {
         this.toastr.success('Thành công');
-        this.getListDataTinTuc();
+        this.getListDatalistLoaiTinTuc();
       } else {
         this.toastr.error(data.Message);
       }

@@ -7,42 +7,26 @@ using System.Web.Http;
 
 namespace Science.Controllers
 {
-    [RoutePrefix("api/v1/menu")]
-    public class MenuController : ApiController
+    [RoutePrefix("api/v1/LoaiTinTuc")]
+    public class LoaiTinTucController : ApiController
     {
         private LinqDataContext db = new LinqDataContext();
 
         [HttpGet]
-        public ResponseBase<List<MenuChildren1>> GetList(int id = 0)
+        public ResponseBase<List<LoaiTinTuc>> GetList()
         {
             try
             {
-                var list = new List<MenuChildren1>();
-                var listChildren = db.Menus.Where(x => x.menu_parent_id == id).ToList();
-                if (listChildren.Any())
+                return new ResponseBase<List<LoaiTinTuc>>
                 {
-                    foreach (var item in listChildren)
-                    {
-                        var menuChildren = new MenuChildren1
-                        {
-                            menu_id = item.menu_id,
-                            menu_code = item.menu_code,
-                            menu_name = item.menu_name,
-                            status = item.status.GetValueOrDefault()
-                        };
-                        list.Add(menuChildren);
-                    }
-                }
-                return new ResponseBase<List<MenuChildren1>>
-                {
-                    data = list,
+                    data = db.LoaiTinTucs.ToList(),
                     message = "Thành công",
                     status = 200
                 };
             }
             catch (Exception ex)
             {
-                return new ResponseBase<List<MenuChildren1>>
+                return new ResponseBase<List<LoaiTinTuc>>
                 {
                     status = 500,
                     message = ex.Message
@@ -51,26 +35,21 @@ namespace Science.Controllers
         }
 
         [HttpPost]
-        public ResponseBase<bool> Save(Menu req)
+        public ResponseBase<bool> Save(LoaiTinTuc req)
         {
             try
             {
-                if (req.menu_id > 0)
+
+                if (req.id_loai_tin_tuc > 0)
                 {
-                    var record = db.Menus.FirstOrDefault(x => x.menu_id == req.menu_id);
-                    record.menu_code = req.menu_code;
-                    record.menu_name = req.menu_name;
-                    record.title = req.title;
-                    record.menu_parent_id = req.menu_parent_id;
-                    record.status = req.status;
-                    record.image = req.image;
-                    record.updated_at = DateTime.Now;
+                    var ai = db.LoaiTinTucs.FirstOrDefault(x => x.id_loai_tin_tuc == req.id_loai_tin_tuc);
+                    ai.Ma_loai = req.Ma_loai;
+                    ai.Loai_tin_tuc = req.Loai_tin_tuc;
                     db.SubmitChanges();
                 }
                 else
                 {
-                    req.created_at = DateTime.Now;
-                    db.Menus.InsertOnSubmit(req);
+                    db.LoaiTinTucs.InsertOnSubmit(req);
                     db.SubmitChanges();
                 }
                 return new ResponseBase<bool>
@@ -95,8 +74,8 @@ namespace Science.Controllers
         {
             try
             {
-                var ai = db.Menus.FirstOrDefault(x => x.menu_id == id);
-                db.Menus.DeleteOnSubmit(ai);
+                var ai = db.LoaiTinTucs.FirstOrDefault(x => x.id_loai_tin_tuc == id);
+                db.LoaiTinTucs.DeleteOnSubmit(ai);
                 db.SubmitChanges();
                 return new ResponseBase<bool>
                 {

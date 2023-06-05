@@ -45,9 +45,9 @@ namespace Science.Models
     partial void InsertComment(Comment instance);
     partial void UpdateComment(Comment instance);
     partial void DeleteComment(Comment instance);
-    partial void InsertMenu(MenuChildren instance);
-    partial void UpdateMenu(MenuChildren instance);
-    partial void DeleteMenu(MenuChildren instance);
+    partial void InsertMenu(Menu instance);
+    partial void UpdateMenu(Menu instance);
+    partial void DeleteMenu(Menu instance);
     partial void InsertMenuParent(MenuParent instance);
     partial void UpdateMenuParent(MenuParent instance);
     partial void DeleteMenuParent(MenuParent instance);
@@ -72,6 +72,12 @@ namespace Science.Models
     partial void InsertNew(New instance);
     partial void UpdateNew(New instance);
     partial void DeleteNew(New instance);
+    partial void InsertQuanLyGopY(QuanLyGopY instance);
+    partial void UpdateQuanLyGopY(QuanLyGopY instance);
+    partial void DeleteQuanLyGopY(QuanLyGopY instance);
+    partial void InsertLoaiTinTuc(LoaiTinTuc instance);
+    partial void UpdateLoaiTinTuc(LoaiTinTuc instance);
+    partial void DeleteLoaiTinTuc(LoaiTinTuc instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -144,11 +150,11 @@ namespace Science.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<MenuChildren> Menus
+		public System.Data.Linq.Table<Menu> Menus
 		{
 			get
 			{
-				return this.GetTable<MenuChildren>();
+				return this.GetTable<Menu>();
 			}
 		}
 		
@@ -213,6 +219,22 @@ namespace Science.Models
 			get
 			{
 				return this.GetTable<New>();
+			}
+		}
+		
+		public System.Data.Linq.Table<QuanLyGopY> QuanLyGopies
+		{
+			get
+			{
+				return this.GetTable<QuanLyGopY>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LoaiTinTuc> LoaiTinTucs
+		{
+			get
+			{
+				return this.GetTable<LoaiTinTuc>();
 			}
 		}
 	}
@@ -1749,7 +1771,7 @@ namespace Science.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Menu")]
-	public partial class MenuChildren : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Menu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1802,7 +1824,7 @@ namespace Science.Models
     partial void Ondeleted_atChanged();
     #endregion
 		
-		public MenuChildren()
+		public Menu()
 		{
 			this._MenuParent = default(EntityRef<MenuParent>);
 			OnCreated();
@@ -2091,7 +2113,7 @@ namespace Science.Models
 		
 		private System.Nullable<System.DateTime> _deleted_at;
 		
-		private EntitySet<MenuChildren> _Menus;
+		private EntitySet<Menu> _Menus;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2119,7 +2141,7 @@ namespace Science.Models
 		
 		public MenuParent()
 		{
-			this._Menus = new EntitySet<MenuChildren>(new Action<MenuChildren>(this.attach_Menus), new Action<MenuChildren>(this.detach_Menus));
+			this._Menus = new EntitySet<Menu>(new Action<Menu>(this.attach_Menus), new Action<Menu>(this.detach_Menus));
 			OnCreated();
 		}
 		
@@ -2304,7 +2326,7 @@ namespace Science.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MenuParent_Menu", Storage="_Menus", ThisKey="menu_parent_id", OtherKey="menu_parent_id")]
-		public EntitySet<MenuChildren> Menus
+		public EntitySet<Menu> Menus
 		{
 			get
 			{
@@ -2336,13 +2358,13 @@ namespace Science.Models
 			}
 		}
 		
-		private void attach_Menus(MenuChildren entity)
+		private void attach_Menus(Menu entity)
 		{
 			this.SendPropertyChanging();
 			entity.MenuParent = this;
 		}
 		
-		private void detach_Menus(MenuChildren entity)
+		private void detach_Menus(Menu entity)
 		{
 			this.SendPropertyChanging();
 			entity.MenuParent = null;
@@ -3921,6 +3943,8 @@ namespace Science.Models
 		
 		private System.Nullable<System.DateTime> _deleted_at;
 		
+		private System.Nullable<int> _type;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3943,6 +3967,8 @@ namespace Science.Models
     partial void Onupdated_atChanged();
     partial void Ondeleted_atChanging(System.Nullable<System.DateTime> value);
     partial void Ondeleted_atChanged();
+    partial void OntypeChanging(System.Nullable<int> value);
+    partial void OntypeChanged();
     #endregion
 		
 		public New()
@@ -4126,6 +4152,342 @@ namespace Science.Models
 					this._deleted_at = value;
 					this.SendPropertyChanged("deleted_at");
 					this.Ondeleted_atChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type", DbType="Int")]
+		public System.Nullable<int> type
+		{
+			get
+			{
+				return this._type;
+			}
+			set
+			{
+				if ((this._type != value))
+				{
+					this.OntypeChanging(value);
+					this.SendPropertyChanging();
+					this._type = value;
+					this.SendPropertyChanged("type");
+					this.OntypeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyGopY")]
+	public partial class QuanLyGopY : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_gop_y;
+		
+		private string _Ho_ten;
+		
+		private string _Email;
+		
+		private string _So_dien_thoai;
+		
+		private string _Tieu_de;
+		
+		private string _Noi_dung;
+		
+		private System.Nullable<System.DateTime> _Ngay_hoi;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_gop_yChanging(int value);
+    partial void Onid_gop_yChanged();
+    partial void OnHo_tenChanging(string value);
+    partial void OnHo_tenChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnSo_dien_thoaiChanging(string value);
+    partial void OnSo_dien_thoaiChanged();
+    partial void OnTieu_deChanging(string value);
+    partial void OnTieu_deChanged();
+    partial void OnNoi_dungChanging(string value);
+    partial void OnNoi_dungChanged();
+    partial void OnNgay_hoiChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgay_hoiChanged();
+    #endregion
+		
+		public QuanLyGopY()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_gop_y", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_gop_y
+		{
+			get
+			{
+				return this._id_gop_y;
+			}
+			set
+			{
+				if ((this._id_gop_y != value))
+				{
+					this.Onid_gop_yChanging(value);
+					this.SendPropertyChanging();
+					this._id_gop_y = value;
+					this.SendPropertyChanged("id_gop_y");
+					this.Onid_gop_yChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ho_ten", DbType="NVarChar(50)")]
+		public string Ho_ten
+		{
+			get
+			{
+				return this._Ho_ten;
+			}
+			set
+			{
+				if ((this._Ho_ten != value))
+				{
+					this.OnHo_tenChanging(value);
+					this.SendPropertyChanging();
+					this._Ho_ten = value;
+					this.SendPropertyChanged("Ho_ten");
+					this.OnHo_tenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NChar(20)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_So_dien_thoai", DbType="NChar(10)")]
+		public string So_dien_thoai
+		{
+			get
+			{
+				return this._So_dien_thoai;
+			}
+			set
+			{
+				if ((this._So_dien_thoai != value))
+				{
+					this.OnSo_dien_thoaiChanging(value);
+					this.SendPropertyChanging();
+					this._So_dien_thoai = value;
+					this.SendPropertyChanged("So_dien_thoai");
+					this.OnSo_dien_thoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieu_de", DbType="NVarChar(MAX)")]
+		public string Tieu_de
+		{
+			get
+			{
+				return this._Tieu_de;
+			}
+			set
+			{
+				if ((this._Tieu_de != value))
+				{
+					this.OnTieu_deChanging(value);
+					this.SendPropertyChanging();
+					this._Tieu_de = value;
+					this.SendPropertyChanged("Tieu_de");
+					this.OnTieu_deChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Noi_dung", DbType="NVarChar(MAX)")]
+		public string Noi_dung
+		{
+			get
+			{
+				return this._Noi_dung;
+			}
+			set
+			{
+				if ((this._Noi_dung != value))
+				{
+					this.OnNoi_dungChanging(value);
+					this.SendPropertyChanging();
+					this._Noi_dung = value;
+					this.SendPropertyChanged("Noi_dung");
+					this.OnNoi_dungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngay_hoi", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngay_hoi
+		{
+			get
+			{
+				return this._Ngay_hoi;
+			}
+			set
+			{
+				if ((this._Ngay_hoi != value))
+				{
+					this.OnNgay_hoiChanging(value);
+					this.SendPropertyChanging();
+					this._Ngay_hoi = value;
+					this.SendPropertyChanged("Ngay_hoi");
+					this.OnNgay_hoiChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoaiTinTuc")]
+	public partial class LoaiTinTuc : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_loai_tin_tuc;
+		
+		private string _Ma_loai;
+		
+		private string _Loai_tin_tuc;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_loai_tin_tucChanging(int value);
+    partial void Onid_loai_tin_tucChanged();
+    partial void OnMa_loaiChanging(string value);
+    partial void OnMa_loaiChanged();
+    partial void OnLoai_tin_tucChanging(string value);
+    partial void OnLoai_tin_tucChanged();
+    #endregion
+		
+		public LoaiTinTuc()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_loai_tin_tuc", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_loai_tin_tuc
+		{
+			get
+			{
+				return this._id_loai_tin_tuc;
+			}
+			set
+			{
+				if ((this._id_loai_tin_tuc != value))
+				{
+					this.Onid_loai_tin_tucChanging(value);
+					this.SendPropertyChanging();
+					this._id_loai_tin_tuc = value;
+					this.SendPropertyChanged("id_loai_tin_tuc");
+					this.Onid_loai_tin_tucChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ma_loai", DbType="NChar(10)")]
+		public string Ma_loai
+		{
+			get
+			{
+				return this._Ma_loai;
+			}
+			set
+			{
+				if ((this._Ma_loai != value))
+				{
+					this.OnMa_loaiChanging(value);
+					this.SendPropertyChanging();
+					this._Ma_loai = value;
+					this.SendPropertyChanged("Ma_loai");
+					this.OnMa_loaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Loai_tin_tuc", DbType="NVarChar(500)")]
+		public string Loai_tin_tuc
+		{
+			get
+			{
+				return this._Loai_tin_tuc;
+			}
+			set
+			{
+				if ((this._Loai_tin_tuc != value))
+				{
+					this.OnLoai_tin_tucChanging(value);
+					this.SendPropertyChanging();
+					this._Loai_tin_tuc = value;
+					this.SendPropertyChanged("Loai_tin_tuc");
+					this.OnLoai_tin_tucChanged();
 				}
 			}
 		}
