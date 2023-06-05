@@ -97,5 +97,40 @@ namespace Science.Controllers
                 };
             }
         }
+
+        [HttpGet, Route("api/v1/News/LoadNewByType")]
+        public ResponseBase<List<NewsDTO>> LoadNewByType()
+        {
+            try
+            {
+                var _type = db.LoaiTinTucs.Where(x => x.Ma_loai != "TB");
+                var list = new List<NewsDTO>();
+                foreach (var item in _type)
+                {
+                    var newDTO = new NewsDTO()
+                    {
+                        id_loai_tin_tuc = item.id_loai_tin_tuc,
+                        Ma_loai = item.Ma_loai,
+                        Loai_tin_tuc = item.Loai_tin_tuc
+                    };
+                    newDTO.list_new = new List<New>();
+                    if (db.News.Where(x => x.type == newDTO.Ma_loai).ToList().Any())
+                    {
+                        newDTO.list_new = db.News.Where(x => x.type == newDTO.Ma_loai).ToList();
+                    }
+                    list.Add(newDTO);
+                }
+                return new ResponseBase<List<NewsDTO>>
+                {
+                    data = list,
+                    message = "Thành công",
+                    status = 200
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

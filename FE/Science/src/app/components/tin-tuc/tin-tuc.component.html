@@ -101,17 +101,17 @@
                 </nz-form-item>
                 <nz-form-item class="col-md-12">
                     <nz-form-label nzFor="descrip">Thẻ tiêu đề</nz-form-label>
-                    <ckeditor [editor]="Editor" formControlName="descrip"></ckeditor>
+                    <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
                 </nz-form-item>
                 <nz-form-item class="col-md-12">
                     <nz-form-label nzFor="note">Thẻ mô tả</nz-form-label>
-                    <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
+                    <ckeditor [editor]="Editor" formControlName="descrip"></ckeditor>
                 </nz-form-item>
                 <nz-form-item class="col-md-12">
                     <nz-form-label  nzFor="status">Loại tin tức</nz-form-label>
                     <nz-form-control>
                         <nz-select nzShowSearch nzAllowClear formControlName="type" nzPlaceHolder="Chọn ">
-                            <nz-option *ngFor="let p of listalLoaiTinTuc" [nzLabel]="p.Loai_tin_tuc" [nzValue]="p.Ma_loai"></nz-option>
+                            <nz-option *ngFor="let p of listLoaiTinTuc" [nzLabel]="p.Loai_tin_tuc" [nzValue]="p.Ma_loai"></nz-option>
                         </nz-select>
                     </nz-form-control>
                 </nz-form-item>

@@ -8,6 +8,7 @@ import { AlbumImageComponent } from 'src/app/components/album-image/album-image.
 import { ChinhSachHoTroComponent } from 'src/app/components/chinh-sach-ho-tro/chinh-sach-ho-tro.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { GopYComponentextends } from 'src/app/components/gop-y/gop-y.component';
+import { LichSuVaPhatTrienComponent } from 'src/module/user-client/lich-su-va-phat-trien/lich-su-va-phat-trien.component';
 import { LienKetComponent } from 'src/app/components/lien-ket/lien-ket.component';
 import { LoaiTinTucComponentextends } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.component';
 import { MenuComponent } from 'src/app/components/menu/menu.component';
@@ -21,6 +22,9 @@ import { HomePageComponent } from 'src/module/user-client/home-page/home-page.co
 import { TrangChuComponent } from 'src/module/user-client/trang-chu/trang-chu.component';
 import { ChangePassComponent } from 'src/page/change-pass/change-pass.component';
 import { LoginComponent } from 'src/page/login/login.component';
+import { ChucNangVaNhiemVuComponent } from 'src/module/user-client/chuc-nang-va-nhiem-vu/chuc-nang-va-nhiem-vu.component';
+import { BanGiamDocComponent } from 'src/module/user-client/ban-giam-doc/ban-giam-doc.component';
+import { CoCauToChucComponent } from 'src/module/user-client/co-cau-to-chuc/co-cau-to-chuc.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -42,7 +46,7 @@ const routes: Routes = [
         path: 'tin-tuc',
         component: TinTucComponent,
       },
-      
+
       {
         path: 'thu-tuc-hanh-chinh',
         component: ThuTucHanhChinhComponent,
@@ -54,7 +58,7 @@ const routes: Routes = [
       {
         path: 'album-anh',
         component: AlbumImageComponent,
-      },  
+      },
       {
         path: 'menu',
         component: MenuComponent,
@@ -86,7 +90,23 @@ const routes: Routes = [
       {
         path: 'trang-chu',
         component: TrangChuComponent,
-      }
+      },
+      {
+        path: 'lich-su-va-phat-trien',
+        component: LichSuVaPhatTrienComponent,
+      },
+      {
+        path: 'chuc-nang-va-nhiem-vu',
+        component: ChucNangVaNhiemVuComponent,
+      },
+      {
+        path: 'ban-giam-doc',
+        component: BanGiamDocComponent,
+      },
+      {
+        path: 'co-cau-to-chuc',
+        component: CoCauToChucComponent,
+      },
     ],
   },
   { path: '**', redirectTo: '' },

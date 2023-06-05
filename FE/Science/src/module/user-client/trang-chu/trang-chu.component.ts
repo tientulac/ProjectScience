@@ -12,5 +12,6 @@ export class TrangChuComponent extends BaseComponent implements OnInit {
     this.Token = await this.getToken();
     await this.getListData();
     await this.getListDatalistLoaiTinTuc();
+    await this.getListDataTinTuc();
   }
 }

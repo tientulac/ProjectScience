@@ -63,7 +63,7 @@ export class TinTucComponent extends BaseComponent implements OnInit {
         image: data.image ?? null,
         status: data.status ?? null,
         note: data.note ?? null,
-        descrip:data.note??null,
+        descrip:data.descrip??null,
         type:data.Ma_loai??null
       });
     }

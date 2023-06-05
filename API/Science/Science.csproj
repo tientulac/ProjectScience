@@ -235,6 +235,7 @@
     <Compile Include="Models\MenuChildren1.cs" />
     <Compile Include="Models\MenuParentDTO.cs" />
     <Compile Include="Models\News1.cs" />
+    <Compile Include="Models\NewsDTO.cs" />
     <Compile Include="Models\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

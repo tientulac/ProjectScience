@@ -153,6 +153,17 @@
       <Column Name="deleted_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.QuanLyGopY" Member="QuanLyGopies">
+    <Type Name="QuanLyGopY">
+      <Column Name="id_gop_y" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ho_ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="So_dien_thoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Tieu_de" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Noi_dung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ngay_hoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Role" Member="Roles">
     <Type Name="Role">
       <Column Name="role_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -190,24 +201,6 @@
       <Column Name="deleted_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.QuanLyGopY" Member="QuanLyGopies">
-    <Type Name="QuanLyGopY">
-      <Column Name="id_gop_y" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ho_ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="So_dien_thoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Tieu_de" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Noi_dung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Ngay_hoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.LoaiTinTuc" Member="LoaiTinTucs">
-    <Type Name="LoaiTinTuc">
-      <Column Name="id_loai_tin_tuc" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ma_loai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Loai_tin_tuc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Recruitment" Member="Recruitments">
     <Type Name="Recruitment">
       <Column Name="recruiment_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -224,20 +217,6 @@
       <Column Name="poster" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
       <Column Name="wage" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.News" Member="News">
-    <Type Name="New">
-      <Column Name="news_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="descrip" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="updated_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="deleted_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_TinTuc_Load" Method="sp_TinTuc_Load">

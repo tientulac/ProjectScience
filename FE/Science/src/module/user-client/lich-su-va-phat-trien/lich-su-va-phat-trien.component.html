@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-6" style="margin-left: 10%;" *ngFor="let item of lsvpt">
+        <section class="content-header" style="padding: 0.5% !important">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <app-bread-crumb [breadCrumbs]="breadCrumbs"></app-bread-crumb>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin: 10px 0; font-style: italic;"><i class="fa fa-calendar"></i>&nbsp;{{item.created_at | date:
+            'dd/MM/yyyy'}} | {{item.Loai_tin_tuc}} | <i class="fa fa-folder-open"></i>&nbsp;Tin tức</div>
+        <div [innerHTML]="item.descrip"></div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="notify" style="margin-top: 15px;background-color: #1251f0;"><i style="padding-left: 15px;"
+                        class="fa fa-bell" aria-hidden="true"></i>TIN LIÊN QUAN </p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row" *ngFor="let new of listNews | slice:0:6">
+                <div class="col-md-4">
+                    <img src="{{new.image}}" alt=""
+                        style="width: 100px; height: 100px;">
+                </div>
+                <div class="col-md-7">
+                    <p style="font-size: 13px;">{{new.title}}</p>
+                    <p style="font-size: 11px;"><i class="fa fa-clock-o"></i>&nbsp;{{new.created_at
+                        | date:'dd/MM/yyyy'}}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

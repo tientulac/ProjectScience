@@ -28,4 +28,11 @@ export class BaseService {
                 headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
             }).pipe(map((z) => { return z; }));
     }
+
+    getAllNewByType(token: any): Observable<any> {
+        return this.http
+            .get<any>(this.appConfig.API + 'News/LoadNewByType', {
+                headers: new HttpHeaders().set('Authorization', `Bearer ${token}`),
+            }).pipe(map((z) => { return z; }));
+    }
 }

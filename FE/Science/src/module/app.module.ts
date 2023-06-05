@@ -47,6 +47,10 @@ import { MenuChildrenComponentextends } from 'src/app/components/menu/menu-child
 import { GopYComponentextends } from 'src/app/components/gop-y/gop-y.component';
 import { LoaiTinTucComponentextends } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.component';
 import { TuyenDungComponentextends } from 'src/app/components/tuyen-dung/tuyen-dung.component';
+import { LichSuVaPhatTrienComponent } from 'src/module/user-client/lich-su-va-phat-trien/lich-su-va-phat-trien.component';
+import { ChucNangVaNhiemVuComponent } from './user-client/chuc-nang-va-nhiem-vu/chuc-nang-va-nhiem-vu.component';
+import { BanGiamDocComponent } from './user-client/ban-giam-doc/ban-giam-doc.component';
+import { CoCauToChucComponent } from './user-client/co-cau-to-chuc/co-cau-to-chuc.component';
 
 registerLocaleData(vi);
 
@@ -76,7 +80,11 @@ registerLocaleData(vi);
     MenuChildrenComponentextends,
     GopYComponentextends,
     LoaiTinTucComponentextends,
-    TuyenDungComponentextends
+    TuyenDungComponentextends,
+    LichSuVaPhatTrienComponent,
+    ChucNangVaNhiemVuComponent,
+    BanGiamDocComponent,
+    CoCauToChucComponent
   ],
   imports: [
     BrowserAnimationsModule,

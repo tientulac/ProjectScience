@@ -187,10 +187,11 @@ export class BaseComponent {
   listalMenu: any;
   listalMenuChildren: any;
   listalGopY: any;
-  listalLoaiTinTuc: any;
+  listLoaiTinTuc: any;
   listNewsNotify: any;
   listalTuyenDung: any;
 
+  listNewByType: any
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
       async (res) => {
@@ -199,10 +200,15 @@ export class BaseComponent {
           async (res) => {
             this.listMenuParent = res.data;
             this.baseService.getListNew(await this.getToken()).subscribe(
-              (res) => {
+              async (res) => {
                 this.listNews = res.data.filter((x: any) => x.status == 1);
                 this.recentNew = this.listNews[0];
                 this.listNewsNotify = res.data.filter((x: any) => x.type == 'TB');
+                this.baseService.getAllNewByType(await this.getToken()).subscribe(
+                  (res) => {
+                    this.listNewByType = res.data.filter((x: any) => x.list_new.length > 0);
+                  }
+                );
               }
             );
           }
@@ -221,7 +227,7 @@ export class BaseComponent {
     this.tinTucService.getListAll(await this.getToken()).subscribe(
       (res) => {
         this.listTinTuc = res.data;
-        console.log(this.listTinTuc)
+        console.log(this.listTinTuc);
       }
     );
   }
@@ -272,7 +278,7 @@ export class BaseComponent {
   async getListDatalistLoaiTinTuc() {
     this.loaiTintucService.getListAll(await this.getToken()).subscribe(
       (res) => {
-        this.listalLoaiTinTuc = res.data;
+        this.listLoaiTinTuc = res.data;
         this.listNewsTypeHome = res.data.filter((x: any) => x != 'TB');
       }
     );
@@ -284,7 +290,7 @@ export class BaseComponent {
       }
     );
   }
-  
+
   currentPage: any = 1;
   arrNumberPage: any = [];
   arrNumberPage_chil: any = [];

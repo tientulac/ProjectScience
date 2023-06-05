@@ -41,7 +41,7 @@
             </li>
             <nz-dropdown-menu #menu="nzDropdownMenu">
                 <ul nz-menu *ngIf="mp.ListMenu?.length > 0">
-                    <li *ngFor="let m of mp.ListMenu" nz-menu-item><a href="{{m.menu_code}}">{{m.menu_name}}
+                    <li *ngFor="let m of mp.ListMenu" nz-menu-item><a href="#/user/{{m.menu_code}}">{{m.menu_name}}
                         </a></li>
                 </ul>
             </nz-dropdown-menu>
