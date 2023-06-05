@@ -346,3 +346,4 @@ D:\1. Projects\2. WebAPP\DO_AN_SV\API\Science\obj\Debug\Science.csproj.CoreCompi
 D:\1. Projects\2. WebAPP\DO_AN_SV\API\Science\obj\Debug\Science.csproj.CopyComplete
 D:\1. Projects\2. WebAPP\DO_AN_SV\API\Science\obj\Debug\Science.dll
 D:\1. Projects\2. WebAPP\DO_AN_SV\API\Science\obj\Debug\Science.pdb
+F:\DoAnWeb\ScienceHY\ProjectScience\API\Science\obj\Debug\Science.csproj.AssemblyReference.cache

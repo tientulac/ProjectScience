@@ -44,6 +44,8 @@ import { ChinhSachHoTroComponent } from 'src/app/components/chinh-sach-ho-tro/ch
 import { AlbumImageComponent } from 'src/app/components/album-image/album-image.component';
 import { MenuComponent } from 'src/app/components/menu/menu.component';
 import { MenuChildrenComponentextends } from 'src/app/components/menu/menu-children/menu-children.component';
+import { GopYComponentextends } from 'src/app/components/gop-y/gop-y.component';
+import { LoaiTinTucComponentextends } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.component';
 
 registerLocaleData(vi);
 
@@ -70,7 +72,9 @@ registerLocaleData(vi);
     ChinhSachHoTroComponent,
     AlbumImageComponent,
     MenuComponent,
-    MenuChildrenComponentextends
+    MenuChildrenComponentextends,
+    GopYComponentextends,
+    LoaiTinTucComponentextends
   ],
   imports: [
     BrowserAnimationsModule,

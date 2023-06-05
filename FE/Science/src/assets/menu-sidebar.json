@@ -29,14 +29,15 @@
                 "routerLink": "/admin/chinh-sach-ho-tro",
                 "icon": "fa fa-bookmark"
             },
-            {
-                "name": "Video",
-                "routerLink": "/admin/video",
-                "icon": "fa fa-camera"
-            },
+           
             {
                 "name": "Album Ảnh",
                 "routerLink": "/admin/album-anh",
+                "icon": "fa fa-chess-rook"
+            },
+            {
+                "name": "Loại tin tức",
+                "routerLink": "/admin/loai-tin-tuc",
                 "icon": "fa fa-chess-rook"
             }
         ]

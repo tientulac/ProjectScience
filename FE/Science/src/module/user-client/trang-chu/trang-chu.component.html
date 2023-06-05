@@ -28,7 +28,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="row" *ngFor="let new of listNews | slice:0:4">
+                                <div class="row" *ngFor="let new of listNews | slice:0:4" style="margin-bottom: 10px;">
                                     <div class="col-md-2">
                                         <img src="{{new.image}}" alt="" style="width: 100px; height: 100px;">
                                     </div>
@@ -44,6 +44,49 @@
                     </section>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12" style="margin: 10px auto;border: solid 1px #ddd6d6;">
+                            <section class="content cus-body"
+                                style="padding-left: 0 !important; padding-right: 0 !important;">
+                                <div class="card">
+                                    <div class="card-title"><i class="fa fa-sun-o" aria-hidden="true"></i>
+                                        TIN MỚI NHẤT</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <h6 style="font-weight: bold;">{{recentNew?.title}}</h6>
+                                            <img src="{{recentNew?.image}}" style="width: 100%;" height="100%" alt="">
+                                            {{renderSubString(recentNew?.descrip)}}
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a href="javascript:void(0)">Chi tiết&nbsp;&nbsp;<i
+                                                    class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row" *ngFor="let new of listNews | slice:0:4"
+                                            style="margin-bottom: 10px;">
+                                            <div class="col-md-2">
+                                                <img src="{{new.image}}" alt="" style="width: 100px; height: 100px;">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p style="font-size: 15px;">{{new.title}}</p>
+                                                <p style="font-size: 13px;"><i
+                                                        class="fa fa-clock-o"></i>&nbsp;{{new.created_at
+                                                    | date:'dd/MM/yyyy'}}</p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-3">
             <img src="http://khcnhungyen.gov.vn/upload/images/Slide/1.jpg" style="width: 100%;" alt="">
@@ -54,7 +97,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="row" *ngFor="let new of listNews | slice:0:6">
+                <div class="row" *ngFor="let new of listNewsNotify | slice:0:6">
                     <div class="col-md-4">
                         <img src="http://khcnhungyen.gov.vn/upload/images/logo/thongbao.jpg" alt=""
                             style="width: 100px; height: 100px;">

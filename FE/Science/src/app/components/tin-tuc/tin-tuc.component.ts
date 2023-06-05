@@ -43,7 +43,8 @@ export class TinTucComponent extends BaseComponent implements OnInit {
       status: [null],
       descrip:[null],
       note: [null],
-      url:[null]
+      url:[null],
+      type:[null]
     });
     await this.getListDataTinTuc();
   }
@@ -60,13 +61,14 @@ export class TinTucComponent extends BaseComponent implements OnInit {
         image: data.image ?? null,
         status: data.status ?? null,
         note: data.note ?? null,
-        descrip:data.note??null
+        descrip:data.note??null,
+        type:data.type??null
       });
     }
     if (type == 'VIEW') {
       this.dataEditor = data.descrip;
       this.isDetail = true;
-    }
+    } 
   }
 
   async save() {
@@ -79,8 +81,9 @@ export class TinTucComponent extends BaseComponent implements OnInit {
         descrip: this.addForm.value.descrip,
         note: this.addForm.value.note,
         url: this.addForm.value.url,
+        type:this.addForm.value.type
       }
-      this.tinTucService.save(req, this.Token).subscribe(
+      this.gopYService.save(req, this.Token).subscribe(
         (res: any) => {
           if (res.status == 200) {
             this.toastr.success('Thành công');
@@ -102,7 +105,7 @@ export class TinTucComponent extends BaseComponent implements OnInit {
   }
 
   delete() {
-    this.tinTucService.delete(this.ID, this.Token).subscribe((data) => {
+    this.gopYService.delete(this.ID, this.Token).subscribe((data) => {
       if (data.status == 200) {
         this.toastr.success('Thành công');
         this.getListDataTinTuc();

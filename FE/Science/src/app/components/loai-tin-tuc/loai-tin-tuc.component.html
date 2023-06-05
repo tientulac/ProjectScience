@@ -21,36 +21,28 @@
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <div class="container"></div>
-                                <nz-table #basicTable [nzData]="listTinTuc" nzShowPagination nzShowSizeChanger
+                                <nz-table #basicTable [nzData]="listalLoaiTinTuc" nzShowPagination nzShowSizeChanger
                                     [nzPageSize]="10">
                                     <thead>
                                         <tr>
-                                            <th class="fw-b">iD</th>
-                                            <th class="fw-b">Tiêu đề</th>
-                                            <th class="fw-b">Trạng thái</th>
+                                            <th class="fw-b">STT</th>
+                                            <th class="fw-b">Mã loại tin tức</th>
+                                            <th class="fw-b">Loại tin tức</th>
                                             <th class="fw-b">Thao tác</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let p of basicTable.data; let i = index">
                                             <td>{{ i + 1 }}</td>
-                                            <td>{{ p.title }}</td>
-                                            <td *ngIf="p.status == 1" style="font-weight: bold; color: green;"><i
-                                                    class="fa fa-check" aria-hidden="true"></i>
-                                            </td>
-                                            <td *ngIf="p.status != 1" style="font-weight: bold; color: red;"><i
-                                                    class="fa fa-ban" aria-hidden="true"></i>
-
-                                            </td>
+                                            <td>{{ p.Ma_loai }}</td>
+                                            <td>{{ p.Loai_tin_tuc }}</td>
                                             <td>
-                                                <a><span nz-icon nzType="eye" nzTheme="outline"
-                                                        (click)="open(p, 'VIEW')"></span></a>
                                                 <nz-divider nzType="vertical"></nz-divider>
                                                 <a><span class="table-icon" nz-icon nzType="edit"
                                                         (click)="open(p, 'EDIT')" nzTheme="outline"></span></a>
                                                 <nz-divider nzType="vertical"></nz-divider>
                                                 <a><span class="table-icon" nz-icon nzType="delete"
-                                                        (click)="openDeleteModal(p.news_id)"
+                                                        (click)="openDeleteModal(p.id_loai_tin_tuc)"
                                                         nzTheme="outline"></span></a>
                                             </td>
                                         </tr>
@@ -92,35 +84,15 @@
         <form nz-form nzLayout="vertical" [formGroup]="addForm">
             <div class="row">
                 <nz-form-item class="col-md-12">
-                    <nz-form-label nzRequired nzFor="title">Tiêu đề</nz-form-label>
+                    <nz-form-label nzRequired nzFor="Ma_loai">Mã loại tin tức</nz-form-label>
                     <nz-form-control nzErrorTip="Không được bỏ trống !">
-                        <input formControlName="title" nz-input placeholder="Nhập" />
+                        <input formControlName="Ma_loai" nz-input placeholder="Nhập" />
                     </nz-form-control>
-                </nz-form-item>
+                </nz-form-item> 
                 <nz-form-item class="col-md-12">
-                    <nz-form-label nzFor="descrip">Thẻ tiêu đề</nz-form-label>
-                    <ckeditor [editor]="Editor" formControlName="descrip"></ckeditor>
-                </nz-form-item>
-                <nz-form-item class="col-md-12">
-                    <nz-form-label nzFor="note">Thẻ mô tả</nz-form-label>
-                    <ckeditor [editor]="Editor" formControlName="note"></ckeditor>
-                </nz-form-item>
-                <nz-form-item class="col-md-12">
-                    <nz-form-label  nzFor="status">Loại tin tức</nz-form-label>
-                    <nz-form-control>
-                        <nz-select nzShowSearch nzAllowClear formControlName="type" nzPlaceHolder="Chọn ">
-                            <nz-option *ngFor="let p of listalLoaiTinTuc" [nzLabel]="p.Loai_tin_tuc" [nzValue]="p.id_loai_tin_tuc"></nz-option>
-                        </nz-select>
-                    </nz-form-control>
-                </nz-form-item>
-                <nz-form-item class="col-md-12">
-                    <nz-form-label  nzFor="status">Trạng thái</nz-form-label>
-                    <nz-form-control>
-                        <nz-select nzShowSearch nzAllowClear formControlName="status" nzPlaceHolder="Chọn ">
-                            <nz-option nzLabel="Chọn" [nzValue]="null">Chọn</nz-option>
-                            <nz-option nzLabel="Hiển thị" [nzValue]="1"></nz-option>
-                            <nz-option nzLabel="Ẩn" [nzValue]="2"></nz-option>
-                        </nz-select>
+                    <nz-form-label nzRequired nzFor="Loai_tin_tuc">Loại tin tức</nz-form-label>
+                    <nz-form-control nzErrorTip="Không được bỏ trống !">
+                        <input formControlName="Loai_tin_tuc" nz-input placeholder="Nhập" />
                     </nz-form-control>
                 </nz-form-item>
             </div>

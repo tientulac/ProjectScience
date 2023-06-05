@@ -5,11 +5,11 @@ import { AppInjector } from 'src/module/app.module';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ChangeEvent } from '@ckeditor/ckeditor5-angular';
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'app-gop-y',
+  templateUrl: './gop-y.component.html',
+  styleUrls: ['./gop-y.component.scss']
 })
-export class MenuComponent extends BaseComponent implements OnInit {
+export class GopYComponentextends extends BaseComponent implements OnInit {
 
   public Editor = ClassicEditor;
   dataEditor: any;
@@ -22,7 +22,7 @@ export class MenuComponent extends BaseComponent implements OnInit {
       icon: 'fas fa-home',
     },
     {
-      name: 'Danh sách menu',
+      name: 'Góp ý',
       routerLink: '',
       active: false,
       icon: ''
@@ -38,30 +38,34 @@ export class MenuComponent extends BaseComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.Token = await this.getToken();
     this.addForm = this.fb.group({
-      menu_parent_id: [null],
-      menu_parent_code: [null,[Validators.required]],
-      menu_parent_name: [null,[Validators.required]],
-      status:[null],
+      Ho_ten: [null],
+      Email: [null],
+      So_dien_thoai: [null],
+      Tieu_de:[null],
+      Noi_dung: [null]
     });
-    await this.getListDatalistMenu();
+    await this.getListDatalistGopY();
   }
 
   open(data: any, type: any) {
     this.addForm.reset();
-    this.titleModal = type == 'ADD' ? 'Thêm mới' : type == 'EDIT' ? 'Cập nhật' : 'Danh sách menu';
-    this.ID = data.menu_parent_id ?? null;
+    this.titleModal = type == 'ADD' ? 'Thêm mới' : type == 'EDIT' ? 'Cập nhật' : 'Chi tiết';
+    this.ID = data.id_gop_y ?? null;
     if (type == 'ADD' || type == 'EDIT') {
       this.isDisplayAddModal = true;
       this.titleModal = type == 'ADD' ? 'Thêm mới' : 'Cập nhật';
       this.addForm.patchValue({
-        status: data.status ?? null,
-        menu_parent_code: data.menu_parent_code ?? null,
-        menu_parent_name: data.menu_parent_name ?? null,
+        Ho_ten: data.Ho_ten ?? null,
+        Email: data.Email ?? null,
+        So_dien_thoai: data.So_dien_thoai ?? null,
+        Tieu_de: data.Tieu_de ?? null,
+        Noi_dung: data.Noi_dung ?? null,
+        Ngay_hoi: data.Ngay_hoi ?? null,
       });
+      this.dataEditor = data.descrip ?? '';
     }
     if (type == 'VIEW') {
-      this.ID;
-      this.getListDatalistMenuChildren(this.ID);
+      this.dataEditor = data.descrip;
       this.isDetail = true;
     }
   }
@@ -69,17 +73,20 @@ export class MenuComponent extends BaseComponent implements OnInit {
   async save() {
     if (this.addForm.valid) {
       let req = {
-        menu_parent_id: this.ID,
-        menu_parent_code: this.addForm.value.menu_parent_code,
-        menu_parent_name: this.addForm.value.menu_parent_name,
-        status: this.addForm.value.status,
+        comment_id: this.ID,
+        Ho_ten: this.addForm.value.Ho_ten,
+        Email: this.addForm.value.Email,
+        So_dien_thoai: this.addForm.value.So_dien_thoai,
+        Tieu_de: this.addForm.value.Tieu_de,
+        Noi_dung: this.addForm.value.Noi_dung,
+        Ngay_hoi: this.addForm.value.Ngay_hoi,
       }
-      this.menuService.save(req, this.Token).subscribe(
+      this.gopYService.save(req, this.Token).subscribe(
         (res: any) => {
           if (res.status == 200) {
             this.toastr.success('Thành công');
             this.handleCancel();
-            this.getListDatalistMenu();
+            this.getListDatalistGopY();
           } else {
             this.toastr.error('Thất bại');
           }
@@ -96,10 +103,10 @@ export class MenuComponent extends BaseComponent implements OnInit {
   }
 
   delete() {
-    this.menuService.delete(this.ID, this.Token).subscribe((data) => {
+    this.gopYService.delete(this.ID, this.Token).subscribe((data) => {
       if (data.status == 200) {
         this.toastr.success('Thành công');
-        this.getListDatalistMenu();
+        this.getListDatalistGopY();
       } else {
         this.toastr.error(data.Message);
       }

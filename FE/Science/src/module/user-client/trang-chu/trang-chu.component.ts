@@ -11,5 +11,6 @@ export class TrangChuComponent extends BaseComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.Token = await this.getToken();
     await this.getListData();
+    await this.getListDatalistLoaiTinTuc();
   }
 }

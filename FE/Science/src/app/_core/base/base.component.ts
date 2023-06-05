@@ -22,6 +22,8 @@ import { ChinhSachHoTroService } from 'src/app/components/chinh-sach-ho-tro/chin
 import { AlbumImageService } from 'src/app/components/album-image/album-image.service';
 import { MeNuService } from 'src/app/components/menu/menu.service';
 import { MenuChildrenService } from 'src/app/components/menu/menu-children/menu-children.service';
+import { GopYService } from 'src/app/components/gop-y/gop-y.service';
+import { LoaiTintucService } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.service';
 
 @Component({
   selector: 'app-base',
@@ -148,7 +150,9 @@ export class BaseComponent {
   albumImageService:AlbumImageService;
   menuService:MeNuService;
   menuChildrenService:MenuChildrenService;
-  
+  gopYService:GopYService;
+  loaiTintucService:LoaiTintucService;
+
   constructor() {
     this.router = AppInjector.get(Router);
     this.spinner = AppInjector.get(NgxSpinnerService);
@@ -164,6 +168,8 @@ export class BaseComponent {
     this.albumImageService = AppInjector.get(AlbumImageService);
     this.menuService = AppInjector.get(MeNuService);
     this.menuChildrenService = AppInjector.get(MenuChildrenService);
+    this.gopYService = AppInjector.get(GopYService);
+    this.loaiTintucService = AppInjector.get(LoaiTintucService);
   }
 
   listSlideAnh: any;
@@ -177,7 +183,10 @@ export class BaseComponent {
   listalbumImage: any;
   listalMenu: any;
   listalMenuChildren: any;
-  
+  listalGopY: any;
+  listalLoaiTinTuc: any;
+  listNewsNotify: any;
+
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
       async (res) => {
@@ -187,8 +196,9 @@ export class BaseComponent {
             this.listMenuParent = res.data;
             this.baseService.getListNew(await this.getToken()).subscribe(
               (res) => {
-                this.listNews = res.data;
+                this.listNews = res.data.filter((x: any) => x.status == 1);
                 this.recentNew = this.listNews[0];
+                this.listNewsNotify = res.data.filter((x: any) => x.type == 'TB');
               }
             );
           }
@@ -242,6 +252,23 @@ export class BaseComponent {
     this.menuChildrenService.getListAll(menu_parent_id,await this.getToken()).subscribe(
       (res) => {
         this.listalMenuChildren = res.data;
+      }
+    );
+  }
+  async getListDatalistGopY() {
+    this.gopYService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalGopY = res.data;
+      }
+    );
+  }
+
+  listNewsTypeHome: any;
+  async getListDatalistLoaiTinTuc() {
+    this.loaiTintucService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listalLoaiTinTuc = res.data;
+        this.listNewsTypeHome = res.data.filter((x: any) => x != 'TB');
       }
     );
   }
