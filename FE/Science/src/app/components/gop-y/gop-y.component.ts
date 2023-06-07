@@ -76,7 +76,7 @@ export class GopYComponentextends extends BaseComponent implements OnInit {
   async save() {
     if (this.addForm.valid) {
       let req = {
-        comment_id: this.ID,
+        id_gop_y: this.ID,
         Ho_ten: this.addForm.value.Ho_ten,
         Email: this.addForm.value.Email,
         So_dien_thoai: this.addForm.value.So_dien_thoai,

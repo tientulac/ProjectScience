@@ -68,12 +68,6 @@
         <elementListCompartment Id="c4ace163-6d88-477d-9db2-e05d644709ac" absoluteBounds="0.765, 11.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b7c1d278-0f14-4a81-802c-f13103fef043" absoluteBounds="3.75, 11.75, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/LinqDataContext/QuanLyGopY" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c8208668-be1a-4f27-a34b-621825b8e71f" absoluteBounds="3.765, 12.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="a00cf9b1-60f7-4eb6-8c01-dd74855638c8" absoluteBounds="9.75, 11.75, 2, 1.9631982421874987">
       <DataClassMoniker Name="/LinqDataContext/Role" />
       <nestedChildShapes>
@@ -92,7 +86,7 @@
         <elementListCompartment Id="26f3b9b9-03b4-45a2-8f5a-00646851a092" absoluteBounds="12.765, 5.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 7.08735270182292); (3.5 : 7.08735270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 7.08735270182292); (3.5 : 7.08735270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LinqDataContext/Account/Account_Comment" />
       <nodes>
         <classShapeMoniker Id="6007225c-66dc-4b48-92cc-4a9f24ded385" />
@@ -110,6 +104,12 @@
       <DataClassMoniker Name="/LinqDataContext/Recruitment" />
       <nestedChildShapes>
         <elementListCompartment Id="d73e20a4-93d5-4f0b-a77f-69345da44032" absoluteBounds="6.515, 11.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="243e3cce-9a2f-41f8-989e-71e8e0ec3f80" absoluteBounds="8.25, 4, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/LinqDataContext/QuanLyGopY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="02391986-22f1-4ccc-a51b-96de063cf7f1" absoluteBounds="8.265, 4.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

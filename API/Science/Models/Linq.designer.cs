@@ -63,9 +63,6 @@ namespace Science.Models
     partial void InsertProceduree(Proceduree instance);
     partial void UpdateProceduree(Proceduree instance);
     partial void DeleteProceduree(Proceduree instance);
-    partial void InsertQuanLyGopY(QuanLyGopY instance);
-    partial void UpdateQuanLyGopY(QuanLyGopY instance);
-    partial void DeleteQuanLyGopY(QuanLyGopY instance);
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
@@ -78,6 +75,9 @@ namespace Science.Models
     partial void InsertRecruitment(Recruitment instance);
     partial void UpdateRecruitment(Recruitment instance);
     partial void DeleteRecruitment(Recruitment instance);
+    partial void InsertQuanLyGopY(QuanLyGopY instance);
+    partial void UpdateQuanLyGopY(QuanLyGopY instance);
+    partial void DeleteQuanLyGopY(QuanLyGopY instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -198,14 +198,6 @@ namespace Science.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<QuanLyGopY> QuanLyGopies
-		{
-			get
-			{
-				return this.GetTable<QuanLyGopY>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Role> Roles
 		{
 			get
@@ -238,11 +230,75 @@ namespace Science.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<QuanLyGopY> QuanLyGopies
+		{
+			get
+			{
+				return this.GetTable<QuanLyGopY>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_TinTuc_Load")]
 		public ISingleResult<sp_TinTuc_LoadResult> sp_TinTuc_Load()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<sp_TinTuc_LoadResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_AlbumImage")]
+		public ISingleResult<SP_AlbumImageResult> SP_AlbumImage()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_AlbumImageResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_UrlLink")]
+		public ISingleResult<SP_UrlLinkResult> SP_UrlLink()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_UrlLinkResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Comment")]
+		public ISingleResult<SP_CommentResult> SP_Comment()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_CommentResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_LoaiTinTuc")]
+		public ISingleResult<SP_LoaiTinTucResult> SP_LoaiTinTuc()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_LoaiTinTucResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_menu")]
+		public ISingleResult<SP_menuResult> SP_menu()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_menuResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_News")]
+		public ISingleResult<SP_NewsResult> SP_News()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_NewsResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Policy")]
+		public ISingleResult<SP_PolicyResult> SP_Policy()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_PolicyResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_SlideImage")]
+		public ISingleResult<SP_SlideImageResult> SP_SlideImage()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SP_SlideImageResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3322,212 +3378,6 @@ namespace Science.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyGopY")]
-	public partial class QuanLyGopY : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_gop_y;
-		
-		private string _Ho_ten;
-		
-		private string _Email;
-		
-		private string _So_dien_thoai;
-		
-		private string _Tieu_de;
-		
-		private string _Noi_dung;
-		
-		private System.Nullable<System.DateTime> _Ngay_hoi;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_gop_yChanging(int value);
-    partial void Onid_gop_yChanged();
-    partial void OnHo_tenChanging(string value);
-    partial void OnHo_tenChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnSo_dien_thoaiChanging(string value);
-    partial void OnSo_dien_thoaiChanged();
-    partial void OnTieu_deChanging(string value);
-    partial void OnTieu_deChanged();
-    partial void OnNoi_dungChanging(string value);
-    partial void OnNoi_dungChanged();
-    partial void OnNgay_hoiChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgay_hoiChanged();
-    #endregion
-		
-		public QuanLyGopY()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_gop_y", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_gop_y
-		{
-			get
-			{
-				return this._id_gop_y;
-			}
-			set
-			{
-				if ((this._id_gop_y != value))
-				{
-					this.Onid_gop_yChanging(value);
-					this.SendPropertyChanging();
-					this._id_gop_y = value;
-					this.SendPropertyChanged("id_gop_y");
-					this.Onid_gop_yChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ho_ten", DbType="NVarChar(50)")]
-		public string Ho_ten
-		{
-			get
-			{
-				return this._Ho_ten;
-			}
-			set
-			{
-				if ((this._Ho_ten != value))
-				{
-					this.OnHo_tenChanging(value);
-					this.SendPropertyChanging();
-					this._Ho_ten = value;
-					this.SendPropertyChanged("Ho_ten");
-					this.OnHo_tenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NChar(20)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_So_dien_thoai", DbType="NChar(10)")]
-		public string So_dien_thoai
-		{
-			get
-			{
-				return this._So_dien_thoai;
-			}
-			set
-			{
-				if ((this._So_dien_thoai != value))
-				{
-					this.OnSo_dien_thoaiChanging(value);
-					this.SendPropertyChanging();
-					this._So_dien_thoai = value;
-					this.SendPropertyChanged("So_dien_thoai");
-					this.OnSo_dien_thoaiChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieu_de", DbType="NVarChar(MAX)")]
-		public string Tieu_de
-		{
-			get
-			{
-				return this._Tieu_de;
-			}
-			set
-			{
-				if ((this._Tieu_de != value))
-				{
-					this.OnTieu_deChanging(value);
-					this.SendPropertyChanging();
-					this._Tieu_de = value;
-					this.SendPropertyChanged("Tieu_de");
-					this.OnTieu_deChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Noi_dung", DbType="NVarChar(MAX)")]
-		public string Noi_dung
-		{
-			get
-			{
-				return this._Noi_dung;
-			}
-			set
-			{
-				if ((this._Noi_dung != value))
-				{
-					this.OnNoi_dungChanging(value);
-					this.SendPropertyChanging();
-					this._Noi_dung = value;
-					this.SendPropertyChanged("Noi_dung");
-					this.OnNoi_dungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngay_hoi", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Ngay_hoi
-		{
-			get
-			{
-				return this._Ngay_hoi;
-			}
-			set
-			{
-				if ((this._Ngay_hoi != value))
-				{
-					this.OnNgay_hoiChanging(value);
-					this.SendPropertyChanging();
-					this._Ngay_hoi = value;
-					this.SendPropertyChanged("Ngay_hoi");
-					this.OnNgay_hoiChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Role")]
 	public partial class Role : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4616,6 +4466,236 @@ namespace Science.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuanLyGopY")]
+	public partial class QuanLyGopY : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_gop_y;
+		
+		private string _Ho_ten;
+		
+		private string _Email;
+		
+		private string _So_dien_thoai;
+		
+		private string _Tieu_de;
+		
+		private string _Noi_dung;
+		
+		private System.Nullable<System.DateTime> _Ngay_hoi;
+		
+		private string _image;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_gop_yChanging(int value);
+    partial void Onid_gop_yChanged();
+    partial void OnHo_tenChanging(string value);
+    partial void OnHo_tenChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnSo_dien_thoaiChanging(string value);
+    partial void OnSo_dien_thoaiChanged();
+    partial void OnTieu_deChanging(string value);
+    partial void OnTieu_deChanged();
+    partial void OnNoi_dungChanging(string value);
+    partial void OnNoi_dungChanged();
+    partial void OnNgay_hoiChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgay_hoiChanged();
+    partial void OnimageChanging(string value);
+    partial void OnimageChanged();
+    #endregion
+		
+		public QuanLyGopY()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_gop_y", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_gop_y
+		{
+			get
+			{
+				return this._id_gop_y;
+			}
+			set
+			{
+				if ((this._id_gop_y != value))
+				{
+					this.Onid_gop_yChanging(value);
+					this.SendPropertyChanging();
+					this._id_gop_y = value;
+					this.SendPropertyChanged("id_gop_y");
+					this.Onid_gop_yChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ho_ten", DbType="NVarChar(50)")]
+		public string Ho_ten
+		{
+			get
+			{
+				return this._Ho_ten;
+			}
+			set
+			{
+				if ((this._Ho_ten != value))
+				{
+					this.OnHo_tenChanging(value);
+					this.SendPropertyChanging();
+					this._Ho_ten = value;
+					this.SendPropertyChanged("Ho_ten");
+					this.OnHo_tenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NChar(20)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_So_dien_thoai", DbType="NChar(10)")]
+		public string So_dien_thoai
+		{
+			get
+			{
+				return this._So_dien_thoai;
+			}
+			set
+			{
+				if ((this._So_dien_thoai != value))
+				{
+					this.OnSo_dien_thoaiChanging(value);
+					this.SendPropertyChanging();
+					this._So_dien_thoai = value;
+					this.SendPropertyChanged("So_dien_thoai");
+					this.OnSo_dien_thoaiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieu_de", DbType="NVarChar(MAX)")]
+		public string Tieu_de
+		{
+			get
+			{
+				return this._Tieu_de;
+			}
+			set
+			{
+				if ((this._Tieu_de != value))
+				{
+					this.OnTieu_deChanging(value);
+					this.SendPropertyChanging();
+					this._Tieu_de = value;
+					this.SendPropertyChanged("Tieu_de");
+					this.OnTieu_deChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Noi_dung", DbType="NVarChar(MAX)")]
+		public string Noi_dung
+		{
+			get
+			{
+				return this._Noi_dung;
+			}
+			set
+			{
+				if ((this._Noi_dung != value))
+				{
+					this.OnNoi_dungChanging(value);
+					this.SendPropertyChanging();
+					this._Noi_dung = value;
+					this.SendPropertyChanged("Noi_dung");
+					this.OnNoi_dungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ngay_hoi", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Ngay_hoi
+		{
+			get
+			{
+				return this._Ngay_hoi;
+			}
+			set
+			{
+				if ((this._Ngay_hoi != value))
+				{
+					this.OnNgay_hoiChanging(value);
+					this.SendPropertyChanging();
+					this._Ngay_hoi = value;
+					this.SendPropertyChanged("Ngay_hoi");
+					this.OnNgay_hoiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_image", DbType="NChar(100)")]
+		public string image
+		{
+			get
+			{
+				return this._image;
+			}
+			set
+			{
+				if ((this._image != value))
+				{
+					this.OnimageChanging(value);
+					this.SendPropertyChanging();
+					this._image = value;
+					this.SendPropertyChanged("image");
+					this.OnimageChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	public partial class sp_TinTuc_LoadResult
 	{
 		
@@ -4853,6 +4933,214 @@ namespace Science.Models
 				if ((this._Loai_tin_tuc != value))
 				{
 					this._Loai_tin_tuc = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_AlbumImageResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_AlbumImageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_UrlLinkResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_UrlLinkResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_CommentResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_CommentResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_LoaiTinTucResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_LoaiTinTucResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_menuResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_menuResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_NewsResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_NewsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_PolicyResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_PolicyResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SP_SlideImageResult
+	{
+		
+		private System.Nullable<int> _SoLuong;
+		
+		public SP_SlideImageResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoLuong", DbType="Int")]
+		public System.Nullable<int> SoLuong
+		{
+			get
+			{
+				return this._SoLuong;
+			}
+			set
+			{
+				if ((this._SoLuong != value))
+				{
+					this._SoLuong = value;
 				}
 			}
 		}

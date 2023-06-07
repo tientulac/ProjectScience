@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScienceHY" Class="LinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-TOPTJLQ;Initial Catalog=ScienceHY;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScienceHYConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-C4VG4U4;Initial Catalog=ScienceHY;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ScienceHYConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -153,17 +153,6 @@
       <Column Name="deleted_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.QuanLyGopY" Member="QuanLyGopies">
-    <Type Name="QuanLyGopY">
-      <Column Name="id_gop_y" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Ho_ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
-      <Column Name="So_dien_thoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Tieu_de" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Noi_dung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Ngay_hoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Role" Member="Roles">
     <Type Name="Role">
       <Column Name="role_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -219,6 +208,18 @@
       <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.QuanLyGopY" Member="QuanLyGopies">
+    <Type Name="QuanLyGopY">
+      <Column Name="id_gop_y" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ho_ten" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="So_dien_thoai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Tieu_de" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Noi_dung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ngay_hoi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="NChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_TinTuc_Load" Method="sp_TinTuc_Load">
     <ElementType Name="sp_TinTuc_LoadResult">
       <Column Name="news_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -234,6 +235,46 @@
       <Column Name="id_loai_tin_tuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Ma_loai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="Loai_tin_tuc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_AlbumImage" Method="SP_AlbumImage">
+    <ElementType Name="SP_AlbumImageResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_UrlLink" Method="SP_UrlLink">
+    <ElementType Name="SP_UrlLinkResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Comment" Method="SP_Comment">
+    <ElementType Name="SP_CommentResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_LoaiTinTuc" Method="SP_LoaiTinTuc">
+    <ElementType Name="SP_LoaiTinTucResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_menu" Method="SP_menu">
+    <ElementType Name="SP_menuResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_News" Method="SP_News">
+    <ElementType Name="SP_NewsResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_Policy" Method="SP_Policy">
+    <ElementType Name="SP_PolicyResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_SlideImage" Method="SP_SlideImage">
+    <ElementType Name="SP_SlideImageResult">
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

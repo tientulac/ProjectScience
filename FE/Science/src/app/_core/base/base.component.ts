@@ -25,6 +25,7 @@ import { MenuChildrenService } from 'src/app/components/menu/menu-children/menu-
 import { GopYService } from 'src/app/components/gop-y/gop-y.service';
 import { LoaiTintucService } from 'src/app/components/loai-tin-tuc/loai-tin-tuc.service';
 import { TuyenDungService } from 'src/app/components/tuyen-dung/tuyen-dung.service';
+import { DashBoadService } from 'src/app/components/dashboard/dashboard.service';
 
 @Component({
   selector: 'app-base',
@@ -154,7 +155,7 @@ export class BaseComponent {
   gopYService: GopYService;
   loaiTintucService: LoaiTintucService;
   tuyenDungService: TuyenDungService;
-
+  dashBoadService: DashBoadService;
   constructor() {
     this.router = AppInjector.get(Router);
     this.spinner = AppInjector.get(NgxSpinnerService);
@@ -173,6 +174,7 @@ export class BaseComponent {
     this.gopYService = AppInjector.get(GopYService);
     this.loaiTintucService = AppInjector.get(LoaiTintucService);
     this.tuyenDungService = AppInjector.get(TuyenDungService);
+    this.dashBoadService = AppInjector.get(DashBoadService);
   }
 
   listSlideAnh: any;
@@ -190,7 +192,7 @@ export class BaseComponent {
   listLoaiTinTuc: any;
   listNewsNotify: any;
   listalTuyenDung: any;
-
+  listaldashboard: any;
   listNewByType: any
   async getListData() {
     this.slideAnhService.getListAll(await this.getToken()).subscribe(
@@ -290,6 +292,7 @@ export class BaseComponent {
       }
     );
   }
+
 
   currentPage: any = 1;
   arrNumberPage: any = [];
@@ -436,7 +439,7 @@ export class BaseComponent {
 
   async getToken() {
     let token = (await this.getInfor()).token;
-    return token.length > 0 ? token : null;
+    return token?.length > 0 ? token : null;
   }
 
   async sortElementByFeild(listAray: [], field: []) {

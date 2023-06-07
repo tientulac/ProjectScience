@@ -88,7 +88,7 @@ const routes: Routes = [
     canActivate: [NonAuthGuard],
     children: [
       {
-        path: 'trang-chu',
+        path: '',
         component: TrangChuComponent,
       },
       {

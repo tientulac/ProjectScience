@@ -39,9 +39,23 @@ namespace Science.Controllers
         {
             try
             {
-                req.Ngay_hoi = DateTime.Now;
-                db.QuanLyGopies.InsertOnSubmit(req);
-                db.SubmitChanges();
+
+                if (req.id_gop_y > 0)
+                {
+                    var ai = db.QuanLyGopies.FirstOrDefault(x => x.id_gop_y == req.id_gop_y);
+                    ai.Ho_ten = req.Ho_ten;
+                    ai.Email = req.Email;
+                    ai.So_dien_thoai = req.So_dien_thoai;
+                    ai.Tieu_de = req.Tieu_de;
+                    ai.image = req.image;
+                    ai.Noi_dung = req.Noi_dung;
+                    db.SubmitChanges();
+                }
+                else
+                {
+                    db.QuanLyGopies.InsertOnSubmit(req);
+                    db.SubmitChanges();
+                }
                 return new ResponseBase<bool>
                 {
                     data = true,

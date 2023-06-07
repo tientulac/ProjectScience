@@ -10,28 +10,31 @@ import { BaseComponent } from 'src/app/_core/base/base.component';
 export class DashboardComponent extends BaseComponent implements OnInit{
   ngOnInit(): void {
     this.createChart()
+    this.getListDataDashboard()
   }
   BD1: any = 1;
   BD2: any = 1;
-
+  dataAlbumImage:any
+  dataComment:any
+  dataLoaiTinTuc:any
+  dataMenu:any
+  dataNews:any
+  dataPolicy:any
+  dataSlideImage:any
+  dataUrlLink:any
   createChart(){
   
     this.chart = new Chart("MyChart", {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['Tòa A','Tòa B','Tòa C' ], 
+        labels: ['Tháng 1','Tháng 2','Tháng 3' ], 
 	       datasets: [
           {
-            label: "Đã ở",
+            label: "Tin tức",
             data: ['20','30', '1'],
             backgroundColor: '#1890ff'
           },
-          {
-            label: "Đang trống",
-            data: ['17', '10', '5'],
-            backgroundColor: '#3a5f64'
-          }  
         ]
       },
       options: {
@@ -39,5 +42,20 @@ export class DashboardComponent extends BaseComponent implements OnInit{
       }
       
     });
+  }
+  async getListDataDashboard() {
+    this.dashBoadService.getListAll(await this.getToken()).subscribe(
+      (res) => {
+        this.listaldashboard = res.data;
+        this.dataAlbumImage=this.listaldashboard.AlbumImage
+        this.dataComment=this.listaldashboard.Comment
+        this.dataLoaiTinTuc=this.listaldashboard.LoaiTinTuc
+        this.dataMenu=this.listaldashboard.Menu
+        this.dataNews=this.listaldashboard.News
+        this.dataPolicy=this.listaldashboard.Policy
+        this.dataSlideImage=this.listaldashboard.SlideImage
+        this.dataUrlLink=this.listaldashboard.UrlLink
+      }
+    );
   }
 }

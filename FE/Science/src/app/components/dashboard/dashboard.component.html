@@ -18,8 +18,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-info">
                     <div class="inner">
-                        <h3>20</h3>
-                        <p>Khách đang ở </p>
+                        <h3>{{dataAlbumImage}}</h3>
+                        <p>Album ảnh </p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-people-roof"></i>
@@ -29,8 +29,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-success">
                     <div class="inner">
-                        <h3>3</h3>
-                        <p>Đoàn đăng kí</p>
+                        <h3>{{dataComment}}</h3>
+                        <p>Góp ý</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-people-group"></i>
@@ -40,8 +40,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-warning">
                     <div class="inner">
-                        <h3>2</h3>
-                        <p>Khách chưa xếp phòng</p>
+                        <h3>{{dataLoaiTinTuc}}</h3>
+                        <p>Loại tin tức</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-arrows-down-to-people"></i>
@@ -51,8 +51,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-info">
                     <div class="inner">
-                        <h3> 8</h3>
-                        <p>Khách sắp vào ở </p>
+                        <h3>{{dataMenu}}</h3>
+                        <p>Menu</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-person-walking-luggage"></i>
@@ -64,8 +64,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>30</h3>
-                        <p>Phòng đang ở</p>
+                        <h3>{{dataNews}}</h3>
+                        <p>Tin tức</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-bed"></i>
@@ -75,8 +75,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-light">
                     <div class="inner">
-                        <h3>15</h3>
-                        <p>Phòng trống</p>
+                        <h3>{{dataPolicy}}</h3>
+                        <p>Thủ tục hành chính</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-house-flag"></i>
@@ -86,8 +86,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-danger">
                     <div class="inner">
-                        <h3>15</h3>
-                        <p>Đoàn chưa thanh toán</p>
+                        <h3>{{dataSlideImage}}</h3>
+                        <p>Chính sách hỗ trợ</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-users-slash"></i>
@@ -97,8 +97,8 @@
             <div class="col-3">
                 <div style="height: 90%;" class="small-box bg-primary">
                     <div class="inner">
-                        <h3>15</h3>
-                        <p>Đã thanh toán</p>
+                        <h3>{{dataUrlLink}}</h3>
+                        <p>Quản lý liên kết</p>
                     </div>
                     <div class="icon">
                         <i class="fa-solid fa-money-check-dollar"></i>
@@ -114,7 +114,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <h2 class="text-center">
-                Biểu đồ thống kê phòng theo tòa nhà
+                Biểu đồ thống kê 
             </h2>
             <div class="chart-container">
                 <canvas id="MyChart">{{ chart }}</canvas>
